@@ -1,76 +1,193 @@
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>万年历 - 网页版</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- 顶部导航栏 -->
+        <header class="header">
+            <div class="nav-title">万年历</div>
+            <div class="nav-actions">
+                <button id="shareBtn" class="nav-btn">分享</button>
+            </div>
+        </header>
 
-const app = express();
-app.use(cors());
+        <!-- 底部标签栏 -->
+        <nav class="tab-bar">
+            <div class="tab-item active" data-tab="calendar">
+                <div class="tab-icon">📅</div>
+                <div class="tab-text">万年历</div>
+            </div>
+            <div class="tab-item" data-tab="lunar">
+                <div class="tab-icon">📜</div>
+                <div class="tab-text">黄历</div>
+            </div>
+            <div class="tab-item" data-tab="festival">
+                <div class="tab-icon">🎉</div>
+                <div class="tab-text">节日</div>
+            </div>
+            <div class="tab-item" data-tab="discovery">
+                <div class="tab-icon">🔍</div>
+                <div class="tab-text">发现</div>
+            </div>
+        </nav>
 
-// 静态文件服务
-app.use(express.static('web'));
+        <!-- 万年历页面 -->
+        <div id="calendarPage" class="page active">
+            <div class="calendar-header">
+                <button id="prevBtn" class="nav-btn">‹</button>
+                <h1 id="title"></h1>
+                <button id="nextBtn" class="nav-btn">›</button>
+            </div>
 
-// 处理根路径
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'web/index.html'));
-});
+            <div class="calendar">
+                <div class="week-row">
+                    <div class="week-cell weekend">日</div>
+                    <div class="week-cell">一</div>
+                    <div class="week-cell">二</div>
+                    <div class="week-cell">三</div>
+                    <div class="week-cell">四</div>
+                    <div class="week-cell">五</div>
+                    <div class="week-cell weekend">六</div>
+                </div>
+                <div id="grid" class="grid"></div>
+            </div>
 
-// 天气代理
-app.get('/api/weather', async (req, res) => {
-  try {
-    const { cityCode, lat, lng } = req.query;
-    const url = 'https://apic.51wnl.com/CttApi/GetWeatherDetail?tkn=6480F2A608958030D190E9E62590174A&cid=Youloft_IOS&av=4.5.9&mac=00:11:22:33:44:55&did=b622c089e7e14d2c2fa8c9129dafbb51&chn=wnl_anzhi&cc=CN&lang=zh&bd=com.youloft.calendar&t=1430366273&cver=6.0&lasttimestamp=&model=iphone&cardId=78&sign=66069614e98aba9d07b1ad26d94e2450';
-    const params = new URLSearchParams();
-    if (cityCode) params.set('CityCode', cityCode);
-    if (lat) params.set('Lat', lat);
-    if (lng) params.set('Lng', lng);
+            <div id="dayPanel" class="day-panel">
+                <div class="day-info">
+                    <div class="date-info">
+                        <div class="date-main" id="dateMain">2025-09-27 · 星期六</div>
+                        <div class="lunar-info" id="lunarInfo">农历··生肖</div>
+                        <div class="ganzhi-info" id="ganzhiInfo">干支:年月日</div>
+                    </div>
+                    <div class="yiji-info">
+                        <div class="yi-info">
+                            <span class="label">宜:</span>
+                            <span class="content" id="yiContent">搬家 合婚订婚 签订合同 交易 搬新房 纳财 开业 订盟 栽种 安床 安门 挂匾 修造 拆卸 出火 收养子女 开光</span>
+                        </div>
+                        <div class="ji-info">
+                            <span class="label">忌:</span>
+                            <span class="content" id="jiContent">结婚 动土 安葬 作灶 行丧 破土 斋醮</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    const fetch = (await import('node-fetch')).default;
-    const resp = await fetch(url + '&' + params.toString());
-    const data = await resp.json();
-    res.json(data);
-  } catch (err) {
-    res.status(500).json({ error: 'weather proxy error', detail: String(err) });
-  }
-});
+            <!-- 天气查询 -->
+            <div class="weather-panel">
+                <div class="panel-title">天气查询</div>
+                <div class="weather-controls">
+                    <input id="cityCode" placeholder="城市代码，如 101010100" />
+                    <button id="weatherBtn">查询天气</button>
+                    <button id="geoBtn">按定位查询</button>
+                </div>
+                <div id="weatherResult" class="weather-result"></div>
+            </div>
 
-// 宜忌计算
-const calendar = require('./utils/calendar.js');
-const YJData = require('./data/YJData.js');
+            <!-- 星座运势 -->
+            <div class="astro-panel">
+                <div class="panel-title">星座运势</div>
+                <div class="astro-controls">
+                    <select id="astroSelect">
+                        <option value="aries">白羊座</option>
+                        <option value="taurus">金牛座</option>
+                        <option value="gemini">双子座</option>
+                        <option value="cancer">巨蟹座</option>
+                        <option value="leo">狮子座</option>
+                        <option value="virgo">处女座</option>
+                        <option value="libra">天秤座</option>
+                        <option value="scorpio">天蝎座</option>
+                        <option value="sagittarius">射手座</option>
+                        <option value="capricorn">摩羯座</option>
+                        <option value="aquarius">水瓶座</option>
+                        <option value="pisces">双鱼座</option>
+                    </select>
+                    <button id="astroBtn">查看星座运势</button>
+                </div>
+                <div id="astroResult" class="astro-result"></div>
+            </div>
+        </div>
 
-app.get('/api/yj', (req, res) => {
-  try {
-    const y = parseInt(req.query.y, 10);
-    const m1 = parseInt(req.query.m, 10);
-    const d = parseInt(req.query.d, 10);
-    if (!y || !m1 || !d) return res.status(400).json({ error: 'bad params' });
-    const date = new Date(y, m1 - 1, d);
-    const fields = calendar.getYJSqlFields(date);
-    const key = `${fields[1]}-${fields[0]}`;
-    const item = YJData[key] || { y: '-', j: '-' };
-    return res.json({ yi: item.y || '-', ji: item.j || '-' });
-  } catch (err) {
-    res.status(500).json({ error: 'yj error', detail: String(err) });
-  }
-});
+        <!-- 黄历页面 -->
+        <div id="lunarPage" class="page">
+            <div class="lunar-header">
+                <h2>黄历详情</h2>
+            </div>
+            <div id="lunarContent" class="lunar-content">
+                <div class="lunar-date-info">
+                    <div class="lunar-date" id="lunarDate">2025年9月27日</div>
+                    <div class="lunar-detail" id="lunarDetail">农历八月初五 · 星期六</div>
+                </div>
+                <div class="lunar-sections">
+                    <div class="lunar-section">
+                        <h3>宜</h3>
+                        <div id="lunarYi" class="lunar-items">搬家 合婚订婚 签订合同 交易 搬新房 纳财 开业 订盟 栽种 安床 安门 挂匾 修造 拆卸 出火 收养子女 开光</div>
+                    </div>
+                    <div class="lunar-section">
+                        <h3>忌</h3>
+                        <div id="lunarJi" class="lunar-items">结婚 动土 安葬 作灶 行丧 破土 斋醮</div>
+                    </div>
+                    <div class="lunar-section">
+                        <h3>冲煞</h3>
+                        <div id="lunarChong" class="lunar-items">冲兔(癸卯)煞东</div>
+                    </div>
+                    <div class="lunar-section">
+                        <h3>胎神</h3>
+                        <div id="lunarTai" class="lunar-items">占门厕外正北</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-// 星座代理
-app.get('/api/astro', async (req, res) => {
-  try{
-    const star = (req.query.star || 'aries').toString();
-    const url = 'https://c.51wnl.com/contentapi/api4.4.0/wxprogram/getstar';
-    const u = new URL(url);
-    u.searchParams.set('starname', star);
-    const fetch = (await import('node-fetch')).default;
-    const resp = await fetch(u.toString());
-    const data = await resp.json();
-    res.json(data);
-  }catch(err){
-    res.status(500).json({ error: 'astro proxy error', detail: String(err) });
-  }
-});
+        <!-- 节日页面 -->
+        <div id="festivalPage" class="page">
+            <div class="festival-header">
+                <h2>节日大全</h2>
+            </div>
+            <div id="festivalContent" class="festival-content">
+                <div class="festival-section">
+                    <h3>今日节日</h3>
+                    <div id="todayFestivals" class="festival-list"></div>
+                </div>
+                <div class="festival-section">
+                    <h3>本月节日</h3>
+                    <div id="monthFestivals" class="festival-list"></div>
+                </div>
+                <div class="festival-section">
+                    <h3>传统节日</h3>
+                    <div id="traditionalFestivals" class="festival-list"></div>
+                </div>
+            </div>
+        </div>
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+        <!-- 发现页面 -->
+        <div id="discoveryPage" class="page">
+            <div class="discovery-header">
+                <h2>发现</h2>
+            </div>
+            <div class="discovery-content">
+                <div class="discovery-section">
+                    <h3>每日一言</h3>
+                    <div id="dailyQuote" class="quote-content">加载中...</div>
+                </div>
+                <div class="discovery-section">
+                    <h3>历史上的今天</h3>
+                    <div id="historyToday" class="history-content">加载中...</div>
+                </div>
+                <div class="discovery-section">
+                    <h3>节气信息</h3>
+                    <div id="solarTerms" class="solar-terms-content">加载中...</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-module.exports = app;
+    <script src="lib/calendar.js"></script>
+    <script src="app.js"></script>
+    <noscript>需要启用 JavaScript 才能显示日历</noscript>
+</body>
+</html>
