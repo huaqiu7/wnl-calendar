@@ -8,6 +8,11 @@ app.use(cors());
 // 静态站点
 app.use('/', express.static(path.join(__dirname)));
 
+// 处理根路径，返回index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 // 天气代理：示例使用原项目的天气接口
 // GET /api/weather?cityCode=101010100 或传入经纬度 lat, lng
 app.get('/api/weather', async (req, res) => {
