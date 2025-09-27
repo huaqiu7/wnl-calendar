@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "commonjs",
-  "description": "Browser demo with local weather proxy for 万年历",
+  "description": "万年历微信小程序 - 支持天气、宜忌、星座功能",
   "scripts": {
     "start": "node index.js",
     "dev": "node index.js"
