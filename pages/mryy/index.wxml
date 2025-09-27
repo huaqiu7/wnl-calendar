@@ -1,0 +1,14 @@
+<view class="container">
+    <scroll-view class="top_scroll" scrollTop="{{topScrollNum}}" scrollY="true">
+        <view class="img_wrapper">
+            <image mode="aspectFill" src="{{imgUrl}}" style="width:{{imgWidth}}px;height:{{imgHeight}}px;"></image>
+            <view class="day_info {{mryyTxtClass}}">
+                <view class="day_number">{{dayNum}}</view>
+                <view class="day_other">{{dayString}}</view>
+            </view>
+            <view class="yy_txt {{mryyTxtClass}}">
+                <view class="mryy_inner_txt">{{mryyTxt}}</view>
+            </view>
+        </view>
+    </scroll-view>
+</view>

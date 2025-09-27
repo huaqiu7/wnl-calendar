@@ -1,0 +1,72 @@
+<view wx:if="{{loadComplete}}">
+    <image class="cover_img" src="{{festivalData.bgImg}}" style="filter: blur({{filterBlur}}px);"></image>
+    <image class="cover_img" src="{{festivalData.bgImg}}" style="filter: blur({{filterBlur}}px)"></image>
+    <view class="liner_back"></view>
+    <view class="pure_back" style="opacity:{{pureOpacity}}"></view>
+    <view class="main">
+        <view class="solar_name">{{festivalData.name}}</view>
+        <view class="start_time">{{displaTime}}</view>
+        <view bind:tap="routeWebpage" class="yunying_content" data-url="{{festivalData.bizUrl}}" wx:if="{{festivalData.bizImg&&festivalData.bizTitle&&festivalData.bizUrl}}">
+            <view class="yunying_left_content">
+                <image alt="" class="yunying_img" src="{{festivalData.bizImg}}"></image>
+                <view class="yunying_txt">{{festivalData.bizTitle}}</view>
+            </view>
+            <view class="yunying_arrow"></view>
+        </view>
+        <view bind:tap="showMore" class="desc_content">
+            <view class="desc_key_list">
+                <view class="desc_key_item temp_desc_key_item" wx:for="{{festivalData.descptionDetail}}" wx:key="{{this}}">
+                    <view class="desc_key_title">{{item.title}}：</view>
+                    <view class="desc_key_txt">{{item.content}}</view>
+                </view>
+            </view>
+            <text class="desc_content_txt {{showMoreDescption?'more':''}}">{{festivalData.descption}}</text>
+            <a class="desc_more_btn" href="javascript:void(0)" wx:if="{{!showMoreDescption}}"></a>
+        </view>
+        <view class="section_content_list">
+            <view bind:tap="showMore" class="temp_section_content section_content" data-index="{{index}}" wx:if="{{item.title}}" wx:for="{{festivalData.detail}}" wx:key="{{this}}">
+                <view class="section_title">{{item.title}}</view>
+                <text class="section_txt {{item.showMore?'more':''}}">{{item.content}}</text>
+                <a class="desc_more_btn" href="javascript:void(0)" wx:if="{{!item.showMore}}"></a>
+            </view>
+        </view>
+        <a class="more_info_link" href="javascript:void(0)"></a>
+    </view>
+    <view class="jieqi_select_content {{isTerm?'':'jieri'}}" wx:if="{{!isSpecial}}">
+        <view class="jieqi_select_content_inner">
+            <view bind:tap="switchFestival" class="prev_select_link" data-name="{{prevFestivalName}}">
+                <view class="prev_select_icon"></view>
+                <view class="prev_select_txt">{{prevFestivalName}}</view>
+            </view>
+            <view bind:tap="toggleTermList" class="jieqi_select_btn" wx:if="{{isTerm}}">
+                二十四节气表
+            </view>
+            <view bind:tap="switchFestival" class="next_select_link" data-name="{{nextFestivalName}}">
+                <view class="next_select_txt">{{nextFestivalName}}</view>
+                <view class="next_select_icon"></view>
+            </view>
+        </view>
+        <view class="jieqi_select_content_mask hidden"></view>
+    </view>
+    <view class="jieqi_list_content" wx:if="{{showTermList}}">
+        <view catch:touchmove="catchmove" class="jieqi_list">
+            <a bind:tap="toggleTermList" class="jieqi_close" href="javascript:void(0)"></a>
+            <view class="jieqi_lunar_year">{{yearName}}</view>
+            <view class="jieqi_content">
+                <view class="jieqiLine">
+                    <view bind:tap="switchFestival" class="jieqiClumn {{item.active?'active':''}}" data-name="{{item.termName}}" data-type="click" wx:for="{{termDateList}}" wx:key="{{this}}">
+                        <view class="tableCellWrapper">
+                            <a class="jieqiItemLink" data-index="2" href="javascript:void(0)">
+                                <view class="jieqiName">{{item.termName}}</view>
+                                <view class="jieqiDay">{{item.termDate}}</view>
+                            </a>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view bind:tap="toggleTermList" catch:touchmove="catchmove" class="jieqi_mask" wx:if="{{showTermList}}"></view>
+    <image bindtap="routeIndex" class="back_index_img" src="../../img/back_index.png" wx:if="{{showBackIndex}}"></image>
+</view>
+<image class="loading-img" src="../../img/refresh_icon@3x.png" wx:else></image>

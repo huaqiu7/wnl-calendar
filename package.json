@@ -1,0 +1,17 @@
+{
+  "name": "wnl-web-proxy",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "description": "Browser demo with local weather proxy for 万年历",
+  "scripts": {
+    "start": "node web/server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "node-fetch": "^3.3.2",
+    "cors": "^2.8.5"
+  }
+}
+
+

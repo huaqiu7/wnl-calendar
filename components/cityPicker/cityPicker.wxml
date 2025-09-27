@@ -1,0 +1,21 @@
+<view bindtap="maskTapCity" catchtouchmove="catchMaskTouchMove" class="mask" id="mask_canvasCity" style="z-index:{{maskZindexCity}};opacity:{{maskOpacityCity}};"></view>
+<view class="city_select_modal" style="z-index:{{modalZindexCity}};opacity:{{modalOpacityCity}};">
+    <view class="cityPicker-content">
+        <picker-view bindchange="cityPickerChange" class="city_picker_view" indicatorStyle="height:36px;" value="{{cityPickerViewValue}}">
+            <picker-view-column>
+                <view class="city_picker_item" wx:for="{{provinces}}" wx:key="index">{{item.name}}</view>
+            </picker-view-column>
+            <picker-view-column>
+                <view class="city_picker_item" wx:for="{{citys}}" wx:key="index">{{item.name}}</view>
+            </picker-view-column>
+            <picker-view-column>
+                <view class="city_picker_item" wx:for="{{countys}}" wx:key="index">{{item.name}}</view>
+            </picker-view-column>
+        </picker-view>
+    </view>
+    <view class="city_confirm_content flex_row">
+        <view bindtap="citySelectCancelTap" class="cancel_btn">取消</view>
+        <view class="middle_line"></view>
+        <view bindtap="citySelectConfirmTap" class="confirm_btn">确定</view>
+    </view>
+</view>

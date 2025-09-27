@@ -1,0 +1,13 @@
+<view>
+    <ad unitId="{{adSource}}" wx:if="{{showType==='wxad'}}"></ad>
+    <image bind:tap="dealRoute" class="card_img" src="{{adImage}}" wx:elif="{{showType==='img'}}"></image>
+    <view bind:tap="dealRoute" class="mryy_view" wx:elif="{{showType==='card'}}">
+        <view class="mryy_title">{{title}}</view>
+        <image class="mryy_img" src="{{adImage}}"></image>
+        <view class="mryy_txt_wraper">
+            <view class="yy_txt">
+                <view class="mryy_inner_txt">{{desc}}</view>
+            </view>
+        </view>
+    </view>
+</view>

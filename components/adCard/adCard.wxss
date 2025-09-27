@@ -1,0 +1,47 @@
+.card_img {
+    width: 100%!important;
+    height: 25vh;
+    padding: 0 7px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+.mryy_view {
+    margin: 10px 7px;
+    background-color: #fff;
+    padding: 15px 13px 10px;
+}
+
+.mryy_title {
+    font-size: 16px;
+    line-height: 1;
+    text-align: left;
+    color: #777;
+}
+
+.mryy_img {
+    width: 100%!important;
+    height: 23vh;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+.mryy_txt_wraper {
+    margin: 12px auto 2px;
+    text-align: left;
+}
+
+.yy_txt {
+    display: inline-block;
+    position: relative;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.mryy_inner_txt {
+    display: inline-block;
+    font-size: 15px;
+    line-height: 1.53;
+    text-align: justify;
+    color: #777;
+}

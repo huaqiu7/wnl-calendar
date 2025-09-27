@@ -1,0 +1,37 @@
+<template name="historyItem">
+    <view class="item-box">
+        <text bindtap="onItemClick" class="item-title" data-datekey="{{content.date}}" data-detailid="{{content.detailID}}">{{content.title}}</text>
+    </view>
+    <view bindtap="onItemClick" class="item-images" data-datekey="{{content.date}}" data-detailid="{{content.detailID}}">
+        <image class="inf-pic" mode="widthFix" src="{{content.imgs[0]}}"></image>
+        <image class="center-pic" mode="widthFix" src="{{content.imgs[1]}}"></image>
+        <image class="inf-pic" mode="widthFix" src="{{content.imgs[2]}}"></image>
+    </view>
+    <view class="item-info">
+        <text>{{content.pv}}浏览</text>
+        <text style="margin-left:70rpx">{{content.date}}</text>
+    </view>
+</template>
+<view class="page-body">
+    <rich-text nodes="{{htmlHeard}}"></rich-text>
+    <view class="ad" wx:if="{{htmlHeard}}">
+        <ad unitId="adunit-8e509190606cd228"></ad>
+    </view>
+    <rich-text nodes="{{htmlText}}"></rich-text>
+    <view class="ad" wx:if="{{htmlText}}">
+        <ad unitId="adunit-8e509190606cd228"></ad>
+    </view>
+    <view class="split_line"></view>
+    <view class="hd" wx:if="{{contentList.length>0}}">相关推荐</view>
+    <view class="history-list">
+        <block wx:for="{{contentList}}" wx:key="{{item.detailID}}">
+            <template is="historyItem" data="{{content:item}}"></template>
+            <view class="ad" wx:if="{{index===2}}">
+                <ad unitId="adunit-8e509190606cd228"></ad>
+            </view>
+        </block>
+    </view>
+    <view bindtap="showMore" class="i-show" wx:if="{{hasMore}}">正在加载...</view>
+    <view class="split_line"></view>
+    <view class="info_footer_txt" wx:if="{{htmlText}}"> 本文版权归原作者所有，如涉及作品版权问题，请与我们联系，我们将删除内容。</view>
+</view>

@@ -1,0 +1,490 @@
+.hidden {
+    display: none;
+}
+
+.container {
+    padding-top: 1px;
+    background-color: #2b9ccc;
+    overflow: hidden;
+    position: relative;
+}
+
+image {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 9;
+    width: 750rpx;
+    height: 270rpx;
+}
+
+.temp_info {
+    font-size: 15px;
+    color: #fff;
+    text-align: center;
+    margin-top: 34px;
+    text-shadow: 0 1px .5px rgba(0,0,0,.2);
+}
+
+.temp_num {
+    position: relative;
+    font-size: 0;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    margin-top: 11px;
+}
+
+.temp_num .num {
+    display: inline-block;
+    height: 80px;
+    background-position: 0;
+    background-repeat: no-repeat；;
+}
+
+.temp_num .num.fu {
+    width: 37px;
+    background-image: url("http://weather.51wnl.com/pages/wnl_weather_new/images/weather-www/tq-big-f@3x.png");
+    background-size: 37px 80px;
+}
+
+.temp_num .temp_num_2 {
+    position: relative;
+}
+
+.temp_num .num.num0 {
+    width: 53px;
+    background-image: url("http://weather.51wnl.com/pages/wnl_weather_new/images/weather-www/tq-big-no0@3x.png");
+    background-size: 53px 80px;
+}
+
+.temp_num .num.num1 {
+    width: 36px;
+    background-image: url("http://weather.51wnl.com/pages/wnl_weather_new/images/weather-www/tq-big-no1@3x.png");
+    background-size: 36px 80px;
+}
+
+.temp_num .num.num2 {
+    width: 53px;
+    background-image: url("http://weather.51wnl.com/pages/wnl_weather_new/images/weather-www/tq-big-no2@3x.png");
+    background-size: 53px 80px;
+}
+
+.temp_num .num.num3 {
+    width: 54px;
+    background-image: url("http://weather.51wnl.com/pages/wnl_weather_new/images/weather-www/tq-big-no3@3x.png");
+    background-size: 54px 80px;
+}
+
+.temp_num .num.num4 {
+    width: 54px;
+    background-image: url("http://weather.51wnl.com/pages/wnl_weather_new/images/weather-www/tq-big-no4@3x.png");
+    background-size: 54px 80px;
+}
+
+.temp_num .num.num5 {
+    width: 54px;
+    background-image: url("http://weather.51wnl.com/pages/wnl_weather_new/images/weather-www/tq-big-no5@3x.png");
+    background-size: 54px 80px;
+}
+
+.temp_num .num.num6 {
+    width: 52px;
+    background-image: url("http://weather.51wnl.com/pages/wnl_weather_new/images/weather-www/tq-big-no6@3x.png");
+    background-size: 52px 80px;
+}
+
+.temp_num .num.num7 {
+    width: 51px;
+    background-image: url("http://weather.51wnl.com/pages/wnl_weather_new/images/weather-www/tq-big-no7@3x.png");
+    background-size: 54px 80px;
+}
+
+.temp_num .num.num8 {
+    width: 54px;
+    background-image: url("http://weather.51wnl.com/pages/wnl_weather_new/images/weather-www/tq-big-no8@3x.png");
+    background-size: 54px 80px;
+}
+
+.temp_num .num.num9 {
+    width: 52px;
+    background-image: url("http://weather.51wnl.com/pages/wnl_weather_new/images/weather-www//tq-big-no9@3x.png");
+    background-size: 52px 80px;
+}
+
+.temp_num .du {
+    position: absolute;
+    top: 0;
+    right: -23px;
+    width: 23px;
+    height: 80px;
+    background-image: url("http://weather.51wnl.com/pages/wnl_weather_new/images/weather-www/tq-big-d@3x.png");
+    background-size: 23px 80px;
+}
+
+.aqi_content {
+    height: 16px;
+    width: 130px;
+    font-size: 15px;
+    color: #fff;
+    line-height: 16px;
+    text-align: center;
+    text-indent: 20px;
+    text-shadow: 0 2px 0 rgba(0,0,0,.2);
+    margin: 11px auto 29px;
+    background-image: url(http://weather.51wnl.com/pages/wnl_weather_new/images/aqi-icon.png);
+    background-position: 0;
+    background-repeat: no-repeat;
+    background-size: 15px 16px;
+}
+
+.more_content {
+    width: 100%;
+    height: 19px;
+    font-size: 15px;
+    color: #fff;
+    text-shadow: 0 1px .5px rgba(0,0,0,.2);
+    line-height: 19px;
+    display: flex;
+}
+
+.tigan_content {
+    padding-left: 12px;
+    background-image: url(http://weather.51wnl.com/pages/wnl_weather_new/images/tq-view-tgwd-icon.png);
+    background-size: 7px 16px;
+}
+
+.feng_content,.tigan_content {
+    background-position: 0;
+    background-repeat: no-repeat;
+    margin-right: 80rpx;
+}
+
+.feng_content {
+    padding-left: 26px;
+    background-image: url(http://weather.51wnl.com/pages/wnl_weather_new/images/tq-view-flfx-icon.png);
+    background-size: 21px 16px;
+}
+
+.shidu_content {
+    padding-left: 16px;
+    background-image: url(http://weather.51wnl.com/pages/wnl_weather_new/images/tq-view-sd-icon.png);
+    background-position: 0;
+    background-repeat: no-repeat;
+    background-size: 11px 16px;
+}
+
+.more_blank_content {
+    -webkit-box-flex: 1;
+    flex: 1;
+}
+
+.more_line_content {
+    height: 1px;
+    background: hsla(0,0%,100%,.2);
+    margin: 8px 15px 18px;
+}
+
+.life_content {
+    margin: 0 15px;
+    border-top: 1px solid hsla(0,0%,100%,.2);
+    border-bottom: 1px solid hsla(0,0%,100%,.2);
+    height: 147px;
+    flex-wrap: wrap;
+}
+
+.life {
+    width: 50%;
+    height: 73px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.chuanyi {
+    border-right: 1px solid hsla(0,0%,100%,.2);
+}
+
+.chuanyi,.ganmao {
+    border-bottom: 1px solid hsla(0,0%,100%,.2);
+}
+
+.yundong {
+    border-right: 1px solid hsla(0,0%,100%,.2);
+}
+
+.left_icon {
+    position: absolute;
+    height: 26px;
+    top: 50%;
+    margin-top: -13px;
+}
+
+.chuanyi .left_icon {
+    left: 0;
+    width: 36px;
+}
+
+.ganmao .left_icon {
+    width: 26px;
+    left: 23px;
+}
+
+.yundong .left_icon {
+    width: 26px;
+    left: 0;
+}
+
+.xianxing .left_icon {
+    width: 36px;
+    left: 23px;
+}
+
+.right_info {
+    position: absolute;
+    top: 18px;
+    text-align: right;
+}
+
+.chuanyi .right_info,.ganmao .right_info,.xianxing .right_info,.yundong .right_info {
+    right: 15px;
+}
+
+.right_left_txt {
+    font-size: 30rpx;
+    line-height: 19px;
+    color: #fff;
+}
+
+.right_left_name {
+    font-size: 13px;
+    color: hsla(0,0%,100%,.6);
+    line-height: 17px;
+    margin-top: 1px;
+}
+
+.sun_rise_content {
+    position: relative;
+    height: 143px;
+    margin: 28px 15px 30px;
+    border-bottom: 1px solid hsla(0,0%,100%,.2);
+}
+
+.sun_rise_content .tq-view-cloud-img {
+    position: absolute;
+    bottom: 60px;
+    right: 24px;
+    width: 60px;
+    height: 16px;
+    background-image: url(http://weather.51wnl.com/pages/wnl_weather_new/images/tq-view-cloud-img@3x.png);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 60px 16px;
+}
+
+.sun_rise_content .tq-view-hill-img {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 224px;
+    height: 20px;
+}
+
+.sun_circle_img_list {
+    width: 286px;
+    height: 143px;
+    position: absolute;
+    left: 50%;
+    margin-left: -144px;
+    top: 0;
+}
+
+.sun-icon {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    z-index: 1000;
+}
+
+.circle_img_list {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.circle_img_list .tq_sun_locus {
+    position: absolute;
+    width: 286px;
+    height: 143px;
+    background-position: 0 0;
+    background-size: 286px 143px;
+    background-repeat: no-repeat;
+}
+
+.tq-sun-locus-yimg_back {
+    background-image: url(http://weather.51wnl.com/pages/wnl_weather_new/images/tq-sun-locus-img@3x.png);
+    z-index: 99;
+}
+
+.tq-sun-locus-yimg_before {
+    background-image: url(http://weather.51wnl.com/pages/wnl_weather_new/images/tq-sun-locus-yimg@3x.png);
+    z-index: 100;
+}
+
+.tq-sun-locus-yimg_before.has_sun_set {
+    background-image: none;
+}
+
+.sun_set_hour {
+    position: absolute;
+    top: 70px;
+    line-height: 19px;
+    font-size: 15px;
+    color: hsla(0,0%,100%,.6);
+    width: 100%;
+    text-align: center;
+}
+
+.sun_time_content {
+    position: absolute;
+    bottom: -9px;
+    width: 100%;
+    line-height: 11px;
+    font-size: 11px;
+    color: #fff;
+}
+
+.sun_rise_time {
+    position: absolute;
+    left: -15px;
+}
+
+.sun_set_time {
+    position: absolute;
+    right: -15px;
+}
+
+.hour_swiper {
+    height: 70px;
+}
+
+.day_swiper,.hour_swiper {
+    font-size: 13px;
+    color: #fff;
+    text-align: center;
+    margin: 0 15px;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.day_swiper {
+    height: auto;
+    position: relative;
+    margin-bottom: 13px;
+    box-sizing: border-box;
+}
+
+.day_swiper .scroll-view {
+    width: 880px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 880px 100px;
+}
+
+.scroll-view {
+    width: 100%;
+    display: flex;
+    position: relative;
+    white-space: nowrap;
+}
+
+.scroll-item,.scroll-view-item {
+    width: 40px;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.scroll-item {
+    flex: none;
+}
+
+.first-scroll-view-item {
+    opacity: .6;
+}
+
+.last-scroll-view-item,.scroll-view-item:last-child {
+    margin-right: 0;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+
+.hour_name {
+    line-height: 17px;
+    text-align: center;
+}
+
+.hour_img {
+    height: 36px;
+    width: 20px;
+    margin: 0 auto;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+}
+
+.hour_temp {
+    line-height: 13px;
+    letter-spacing: 0;
+}
+
+.day_week {
+    font-size: 15px;
+    color: #fff;
+    line-height: 19px;
+}
+
+.day_date,.day_weather,.day_week {
+    letter-spacing: 0;
+    text-align: center;
+}
+
+.day_date,.day_weather {
+    font-size: 13px;
+    color: hsla(0,0%,100%,.6);
+    line-height: 16px;
+    margin-bottom: 3px;
+}
+
+.day_img {
+    height: 26px;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+}
+
+.day_weather {
+    margin-bottom: 0;
+    color: #fff;
+}
+
+.high_temp,.low_temp {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.canvasimg1,.canvasimg2 {
+    position: absolute;
+    left: 0;
+    height: 100px;
+    width: 880px;
+    z-index: 9999;
+}
+
+.canvasImg {
+    transform: translate(100%);
+    visibility: hidden;
+}

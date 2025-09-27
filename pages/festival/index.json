@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "节日",
+    "usingComponents": {
+        "adCard": "../../components/adCard/adCard"
+    }
+}

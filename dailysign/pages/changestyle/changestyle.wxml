@@ -1,0 +1,50 @@
+<import src="../../template/styles.wxml"></import>
+<view class="{{!isHuawei?'main':'main huawei'}}">
+    <swiper autoplay="{{autoplay}}" bindchange="changeIndex" current="{{current}}" duration="{{duration}}" nextMargin="30rpx" previousMargin="30rpx" style="height:1000rpx">
+        <swiper-item bindtap="" bindtouchmove="" data-index="{{index}}">
+            <template is="style0NoContentTemp" data="{{item:item,iscs:true}}"></template>
+        </swiper-item>
+        <swiper-item bindtap="" bindtouchmove="" data-index="{{index}}">
+            <template is="style1NoContentTemp" data="{{item:item,iscs:true}}"></template>
+        </swiper-item>
+        <swiper-item bindtap="" bindtouchmove="" data-index="{{index}}">
+            <template is="style2NoContentTemp" data="{{item:item,iscs:true}}"></template>
+        </swiper-item>
+        <swiper-item bindtap="" bindtouchmove="" data-index="{{index}}">
+            <template is="style3NoContentTemp" data="{{item:item,iscs:true}}"></template>
+        </swiper-item>
+        <swiper-item bindtap="" bindtouchmove="" data-index="{{index}}">
+            <template is="style4NoContentTemp" data="{{item:item,iscs:true}}"></template>
+        </swiper-item>
+        <swiper-item bindtap="" bindtouchmove="" data-index="{{index}}">
+            <template is="style5NoContentTemp" data="{{item:item,iscs:true}}"></template>
+        </swiper-item>
+    </swiper>
+    <view class="{{isHuawei?'bottom-group huawei':'bottom-group'}}">
+        <view bindtap="selectStyle" class="img" data-index="0">
+            <image src="../images/gray-icon@2x.png" wx:if="{{!active0}}"></image>
+            <image src="../images/choose-icon@2x.png" wx:if="{{active0}}"></image>
+        </view>
+        <view bindtap="selectStyle" class="img" data-index="1">
+            <image src="../images/gray-icon@2x.png" wx:if="{{!active1}}"></image>
+            <image src="../images/choose-icon@2x.png" wx:if="{{active1}}"></image>
+        </view>
+        <view bindtap="selectStyle" class="img" data-index="2">
+            <image src="../images/gray-icon@2x.png" wx:if="{{!active2}}"></image>
+            <image src="../images/choose-icon@2x.png" wx:if="{{active2}}"></image>
+        </view>
+        <view bindtap="selectStyle" class="img" data-index="3">
+            <image src="../images/gray-icon@2x.png" wx:if="{{!active3}}"></image>
+            <image src="../images/choose-icon@2x.png" wx:if="{{active3}}"></image>
+        </view>
+        <view bindtap="selectStyle" class="img" data-index="4">
+            <image src="../images/gray-icon@2x.png" wx:if="{{!active4}}"></image>
+            <image src="../images/choose-icon@2x.png" wx:if="{{active4}}"></image>
+        </view>
+        <view bindtap="selectStyle" class="img" data-index="5">
+            <image src="../images/gray-icon@2x.png" wx:if="{{!active5}}"></image>
+            <image src="../images/choose-icon@2x.png" wx:if="{{active5}}"></image>
+        </view>
+    </view>
+    <view bindtap="select" class="{{isHuawei?'btn-ok huawei':'btn-ok'}}">确定</view>
+</view>

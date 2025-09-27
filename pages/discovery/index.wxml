@@ -1,0 +1,45 @@
+<view class="container">
+    <scroll-view class="top_scroll" scrollTop="{{topScrollNum}}" scrollY="true">
+        <view class="main-content" style="background-image:url(https://mobile.51wnl.com/wxapp_resource/wxapp_wnl/faxian-board-img.png)">
+            <view class="wnl-info">
+                <view class="logo-content">
+                    <view class="logoPic">
+                        <image src="https://www.51wnl.com/wxapp_resource/wnl/wnl_icon@3x.png"></image>
+                    </view>
+                    <view class="logo-txt">51万年历</view>
+                    <view class="userNum">
+            三亿用户真实选择
+          </view>
+                </view>
+                <view class="wnl-desc">
+                    <view class="leaves left-leaves">
+                        <image src="../../img/leftleaves-icon.png"></image>
+                    </view>
+                    <view class="wnl-txt">App Store 日历应用排名No.1</view>
+                    <view class="wnl-txt">多次入围iOS应用榜前百强</view>
+                    <view class="wnl-txt">适合中国人的日历应用</view>
+                    <view class="leaves right-leaves">
+                        <image src="../../img/rightleaves-icon.png"></image>
+                    </view>
+                </view>
+                <view class="splitLine"></view>
+                <view class="wnl_desc_content flex_row">
+                    <view class="wnl_desc">
+                        <view class="wnl_intro">官网:</view>
+                        <view class="wnl_intro">公众号:</view>
+                        <view class="wnl_intro">QQ群:</view>
+                        <view class="wnl_intro">微博:</view>
+                    </view>
+                    <view bindlongtap="qrcodeTap" bindtap="qrcodeTap" class="wnl_qrcode">
+                        <image class="wnl_qrcode_img" src="../../img/wnl_QR@3x.png"></image>
+                        <view class="gzh_tip">关注公众号</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="copyright">
+            <view class="copyright-zh">重庆可兰达科技有限公司 版权所有</view>
+            <view class="copyright-en">{{copyright}}</view>
+        </view>
+    </scroll-view>
+</view>

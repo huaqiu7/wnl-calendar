@@ -1,0 +1,101 @@
+<view class="container">
+    <canvas canvasId="firstCanvas" class="canvasImg" style="position:absolute;left:0px;top:12px;height:300px;width:2640px;z-index:0"></canvas>
+    <canvas canvasId="secondCanvas" class="canvasImg" style="position:absolute;left:0px;top:14px;height:300px;width:2640px;z-index:0;"></canvas>
+    <image src="../../img/weather-icon/tq-view-bg-img@3x.png"></image>
+    <view class="temp-content">
+        <view class="temp_info">{{temp_info}}</view>
+        <view class="temp_num">
+            <view class="num fu" wx:if="{{temp_num.temp_num_fu}}"></view>
+            <view class="num temp_num_1 {{temp_num.temp_num_1}}"></view>
+            <view class="num temp_num_2 {{temp_num.temp_num_2}}">
+                <view class="du"></view>
+            </view>
+        </view>
+        <view class="aqi_content" style="width:{{aqi.aqiWidth}}">{{aqi.aqiText}}</view>
+        <view class="more_content">
+            <view class="more_blank_content"></view>
+            <view class="tigan_content">{{tigan}}</view>
+            <view class="feng_content">{{feng}}</view>
+            <view class="shidu_content">{{shidu}}</view>
+            <view class="more_blank_content"></view>
+        </view>
+        <view class="more_line_content"></view>
+    </view>
+    <view class="hour_swiper">
+        <scroll-view class="scroll-view" scrollX="true" style="height:70px;width:100%">
+            <view class=" scroll-view-item" wx:for="{{hourTemp}}" wx:key="{{index}}">
+                <view class="hour_name" wx:if="{{index==0}}">现在</view>
+                <view class="hour_name" wx:else>{{item.h}}时</view>
+                <view class="hour_img" style="background-image:url({{item.wt}})"></view>
+                <view class="hour_temp">{{item.tm}}°</view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="more_line_content"></view>
+    <view class="day_swiper">
+        <scroll-view scrollX="true">
+            <view class="scroll-view" scrollX="true" style="width:100%;position:relative">
+                <image class="canvasimg1" src="{{canvasImg1}}" style="position:absolute;left:0px;bottom:30px;z-index:9999"></image>
+                <image class="canvasimg2" src="{{canvasImg2}}" style="position:absolute;left:0px;bottom:30px;z-index:9999"></image>
+                <view class="scroll-item {{index==0?'first-scroll-view-item':''}} {{index==dayInfo.length-1?'last-scroll-view-item':''}}" style="width:40px" wx:for="{{dayInfo}}" wx:key="{{index}}">
+                    <view class="day_week" wx:if="{{index==0}}">昨天</view>
+                    <view class="day_week" wx:elif="{{index==1}}">今天</view>
+                    <view class="day_week" wx:else>{{item.week}}</view>
+                    <view class="day_date ">{{item.date}}</view>
+                    <view class="day_img " style="background-image:url({{item.icon}}) "></view>
+                    <view class="day_weather ">{{item.weather}}</view>
+                    <view class="canvas " style="position:relative;height:150px;margin-top:15px ">
+                        <view class="high_temp " style="position:absolute;top:{{top1[index].drawY}} ">{{item.high_temp}}</view>
+                        <view class="low_temp " style="position:absolute;top:{{top2[index].drawY}} ">{{item.low_temp}}</view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="life_content ">
+        <view class="life chuanyi ">
+            <image class="left_icon " src="http://weather.51wnl.com/pages/wnl_weather_new/images/chuanyi_icon.png "></image>
+            <view class="right_info ">
+                <view class="right_left_txt ">{{lifedata.chuanyi}}</view>
+                <view class="right_left_name ">穿衣</view>
+            </view>
+        </view>
+        <view class="life ganmao ">
+            <image class="left_icon " src="http://weather.51wnl.com/pages/wnl_weather_new/images/ganmao_icon.png "></image>
+            <view class="right_info ">
+                <view class="right_left_txt ">{{lifedata.ganmao}}</view>
+                <view class="right_left_name ">感冒</view>
+            </view>
+        </view>
+        <view class="life yundong ">
+            <image class="left_icon " src="http://weather.51wnl.com/pages/wnl_weather_new/images/yundong_icon.png "></image>
+            <view class="right_info ">
+                <view class="right_left_txt ">{{lifedata.yundong}}</view>
+                <view class="right_left_name ">运动</view>
+            </view>
+        </view>
+        <view class="life xianxing {{xianxing.cclass}}" wx:if="{{xianxing.flag}} ">
+            <image class="left_icon " src="http://weather.51wnl.com/pages/wnl_weather_new/images/xianxing_icon.png "></image>
+            <view class="right_info ">
+                <view class="right_left_txt ">{{xianxing.txt}}</view>
+                <view class="right_left_name ">限行</view>
+            </view>
+        </view>
+    </view>
+    <view class="sun_rise_content ">
+        <image class="tq-view-hill-img " src="http://weather.51wnl.com/pages/wnl_weather_new/images/tq-view-hill-img@3x.png "></image>
+        <view class="tq-view-cloud-img "></view>
+        <view class="sun_circle_img_list ">
+            <image class="sun-icon " src="http://weather.51wnl.com/pages/wnl_weather_new/images/tq-view-sun-icon.png " style="bottom:{{sun_position.bottom}};left:{{sun_position.left}} " wx:if="{{!hasSunset}}"></image>
+            <view class="circle_img_list ">
+                <view class="tq_sun_locus tq-sun-locus-yimg_back "></view>
+                <view class="tq_sun_locus tq-sun-locus-yimg_before" style="width:{{sun_position.width}} " wx:if="{{!hasSunset}}"></view>
+            </view>
+            <view class="sun_set_hour ">{{sunSetHour}}</view>
+            <view class="sun_time_content ">
+                <view class="sun_rise_time ">{{sunrise}}</view>
+                <view class="sun_set_time ">{{sunset}}</view>
+            </view>
+        </view>
+    </view>
+</view>

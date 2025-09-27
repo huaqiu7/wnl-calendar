@@ -1,0 +1,291 @@
+<view class="container">
+    <include src="../../components/datePicker/datePicker.wxml"></include>
+    <include src="../../components/cityPicker/cityPicker.wxml"></include>
+    <scroll-view bindscroll="topViewScrollEvent" class="top_scroll" scrollTop="{{topScrollNum}}" scrollY="true">
+        <view class="month_view_hd">
+            <view class="month_select_content">
+                <form bindsubmit="dateSelectTap" reportSubmit="true">
+                    <button class="date_month" formType="submit" hoverClass="none">{{currentDateString}}</button>
+                </form>
+                <image class="arrowIcon" src="../../img/selecttime-icon@3x.png"></image>
+                <form bindsubmit="todayTap" reportSubmit="true">
+                    <button class="today_btn" formType="submit" hoverClass="none" style="display:{{todayDisaply}}">
+                        <view class="today_inner">今</view>
+                    </button>
+                </form>
+            </view>
+            <form bindsubmit="yjToggleBtn" reportSubmit="true">
+                <button bindtap="" class="yjBtn" formType="submit" hoverClass="none">{{yjBtnTxt}}</button>
+            </form>
+        </view>
+        <scroll-view scrollX class="yjList {{animationClass}}" style="width: 100%">
+            <view class="yjListInner flex_row" style="width: {{yjListWidth}}">
+                <view bindtap="yjSelectTap" class="yjSelect {{yjTxtStatus[index]}}" data-index="{{index}}" id="yjSelect{{index}}" style="width:{{item.length*16+22}}px" wx:for="{{yjTxtList}}" wx:key="*this">
+          {{item}}
+        </view>
+            </view>
+        </scroll-view>
+        <view class="month_view">
+            <view bindtouchend="monthTouchEnd" bindtouchmove="monthTouchMove" bindtouchstart="monthTouchStart" class="singleShowMonthList" style="opacity:{{singleMonthDisplay}};">
+                <view class="week_view flex_row" style="width:{{monthViewWidth}}px;">
+                    <view class="week_view_item flex_row_stretch weekend">日</view>
+                    <view class="week_view_item flex_row_stretch">一</view>
+                    <view class="week_view_item flex_row_stretch">二</view>
+                    <view class="week_view_item flex_row_stretch">三</view>
+                    <view class="week_view_item flex_row_stretch">四</view>
+                    <view class="week_view_item flex_row_stretch">五</view>
+                    <view class="week_view_item flex_row_stretch weekend">六</view>
+                </view>
+                <view class="month_list flex_row" style="width:{{monthViewWidth}}px;height:{{singleMonthDayObj.monthViewHeight}}px;top:{{singleMonthDayObj.monthViewTop}}px;">
+                    <view bindtap="monthItemTap" class="month_item flex_row_fix {{item.monthClass}}" data-day="{{item.day}}" data-month="{{item.month}}" data-year="{{item.year}}" style="width:{{item.width}}px;height:{{item.height}}px;margin-bottom:{{item.monthItemMarginBottom}}px;" wx:for="{{singleMonthDayObj.monthDayList}}" wx:key="{{index}}">
+                        <view class="day_wrapper">
+                            <view class="vacation_icon {{item.vacationClass}}">{{item.vacationClass=='ban'?'班':'休'}}</view>
+                            <view class="day_num">{{item.index}}</view>
+                            <view class="day_lunar {{fontLowClass}}">{{item.lunarDay}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view animation="{{monthAnimation}}" class="month_view_content" style="opacity:{{monthViewDisplay}};width:{{screenWidth*3}}px;">
+                <view class="slide_month_view" style="width:{{screenWidth}}px;" wx:for="{{monthList}}" wx:for-item="monthInfo" wx:key="{{index}}">
+                    <view class="week_view flex_row" style="width:{{monthViewWidth}}px;">
+                        <view class="week_view_item flex_row_stretch weekend">日</view>
+                        <view class="week_view_item flex_row_stretch">一</view>
+                        <view class="week_view_item flex_row_stretch">二</view>
+                        <view class="week_view_item flex_row_stretch">三</view>
+                        <view class="week_view_item flex_row_stretch">四</view>
+                        <view class="week_view_item flex_row_stretch">五</view>
+                        <view class="week_view_item flex_row_stretch weekend">六</view>
+                    </view>
+                    <view class="month_list flex_row" style="width:{{monthViewWidth}}px;height:{{monthInfo.monthViewHeight}}px;top:{{monthInfo.monthViewTop}}px;">
+                        <view class="month_item flex_row_fix {{item.monthClass}}" style="width:{{item.width}}px;height:{{item.height}}px;margin-bottom:{{item.monthItemMarginBottom}}px;" wx:for="{{monthInfo.monthDayList}}" wx:key="{{index}}">
+                            <view class="day_wrapper">
+                                <view class="day_num">{{item.index}}</view>
+                                <view class="day_lunar {{fontLowClass}}">{{item.lunarDay}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view bindtap="" class="day_view" data-day="{{dayViewObj.day}}" data-month="{{dayViewObj.month}}" data-year="{{dayViewObj.year}}" formType="submit" hoverClass="none">
+            <view class="day_detail_info flex_row">
+                <view class="detail_info_content">
+                    <form bindsubmit="dayViewTap" reportSubmit="true">
+                        <button class="day_detail_num" formType="submit" hoverClass="none">{{dayViewObj.day}}</button>
+                    </form>
+                    <form bindsubmit="dayViewTap" reportSubmit="true">
+                        <button class="lunar_day_info" formType="submit" hoverClass="none">
+                            <view class="lunar_day_detail">{{dayViewObj.lunarDayDetail}}</view>
+                            <view class="lunar_date">{{dayViewObj.lunarDate}}</view>
+                        </button>
+                    </form>
+                </view>
+                <view catch:tap="routeFortune" class="day_detail_icon">今日运势</view>
+            </view>
+            <view catch:tap="routeTips" class="festival_content flex_row" wx:if="{{dayViewObj.festivalDisplay}}">
+                <view class="festival_content_icon">节</view>
+                <view class="festival_detail" wx:if="{{festivalList.length===1}}">{{dayViewObj.jiejiari}}</view>
+                <picker bindchange="festivalChange" class="festival_detail" range="{{festivalList}}" value="{{dayViewObj.jiejiari}}" wx:else>
+                    <view>{{dayViewObj.jiejiari}}</view>
+                </picker>
+            </view>
+            <form bindsubmit="dayViewTap" reportSubmit="true">
+                <button formType="submit" hoverClass="none">
+                    <view class="yi_content flex_row">
+                        <view class="yi_icon">宜</view>
+                        <view class="yi_detail">{{dayViewObj.yi}}</view>
+                    </view>
+                </button>
+            </form>
+            <form bindsubmit="dayViewTap" reportSubmit="true">
+                <button formType="submit" hoverClass="none">
+                    <view class="ji_content flex_row">
+                        <view class="ji_icon">忌</view>
+                        <view class="ji_detail">{{dayViewObj.ji}}</view>
+                    </view>
+                </button>
+            </form>
+        </view>
+        <view class="adbox">
+            <ad-custom unitId="adunit-b6cad0e712c8fdae"></ad-custom>
+        </view>
+        <adCard adImage="{{ad[0].adImage}}" adSource="{{ad[0].adSource}}" adType="{{ad[0].adType}}" desc="{{ad[0].desc}}" title="{{ad[0].title}}" wx:if="{{ad[0].showCard}}"></adCard>
+        <view bindtap="" class="weather_view">
+            <view animation="{{loadEaseOut}}" class="loadingBG" wx:if="{{!isWeatherShow}}">
+                <image class="loading" src="../../img/refresh_icon@3x.png"></image>
+            </view>
+            <view style="width:100%;height:100%;" wx:if="{{isWeatherShow}}">
+                <view class="weather_cur">
+                    <form bindsubmit="weatherViewTap" reportSubmit="true">
+                        <button class="weather_left_wrapper" formType="submit" hoverClass="none">
+                            <view class="weather_cur_tp">{{weatherData[0].ct}}°</view>
+                            <view class="weather_cur_ct1">
+                                <view class="weather_cur_ct1_left" style="font-size:14px;">
+                                    <view class="weather_cur_cd">{{weatherData[0].weather}}</view>
+                                    <view class="weather_cur_lh">{{weatherData[0].tl}}/{{weatherData[0].th}}</view>
+                                </view>
+                                <view class="weather_cur_ct1_right">
+                                    <view class="weather_cur_pm" style="background-color:{{weatherData[0].pmState}};bottom:{{weather_cur_pm_weather}}">
+                    {{weatherData[0].aqi.grade}} {{weatherData[0].aqi.index}}
+                  </view>
+                                </view>
+                            </view>
+                        </button>
+                    </form>
+                    <form bind:submit="citySelectTap" reportSubmit="true">
+                        <button catchtap="" class="weather_cur_ct2" formType="submit" hoverClass="none">
+                            <view class="weatherAddr">
+                                <view class="weather_cur_c" style="font-size:{{city_font}}; padding-top:{{city_padding}}">
+                  {{weatherData[0].city}}
+                </view>
+                                <view class="city_switch"></view>
+                            </view>
+                            <view class="weather_cur_rh">{{weatherData[0].wd}} | 湿度{{weatherData[0].rh}}%</view>
+                        </button>
+                    </form>
+                    <view class="weather_cur_d" wx:if="{{isWeatherDateShow}}">{{weatherData[0].date}}</view>
+                </view>
+                <view class="weatherSplitLine"></view>
+                <form bindsubmit="weatherViewTap" class="weather_bottom" reportSubmit="true">
+                    <button class="weather_two" formType="submit" hoverClass="none">
+                        <view class="weather_tom">
+                            <view class="weather_th_ct1">
+                                <view class="weather_th_d">
+                  明天
+                  <text class="weather_th_lh">{{weatherData[1].tl}}/{{weatherData[1].th}}°</text>
+                                </view>
+                                <view class="weather_th_pm">
+                                    <view class="color_border" style="background-color:{{weatherData[1].pmState}};"></view>
+                                    <view>{{weatherData[1].aqi.grade}}</view>
+                                </view>
+                            </view>
+                            <view class="weather_th_ct2">
+                                <view class="weather_th_icon">
+                                    <image class="tom_img" src="{{weatherData[1].icon}}"></image>
+                                </view>
+                                <view class="weather_th_cd">{{weatherData[1].weather}}</view>
+                            </view>
+                        </view>
+                        <view class="weather_two_split"></view>
+                        <view class="weather_hou">
+                            <view class="weather_th_ct1">
+                                <view class="weather_th_d">
+                  后天
+                  <text class="weather_th_lh">{{weatherData[2].tl}}/{{weatherData[2].th}}°</text>
+                                </view>
+                                <view class="weather_th_pm">
+                                    <view class="color_border" style="background-color:{{weatherData[2].pmState}};"></view>
+                                    <view>{{weatherData[2].aqi.grade}}</view>
+                                </view>
+                            </view>
+                            <view class="weather_th_ct2">
+                                <view class="weather_th_icon">
+                                    <image class="hou_img" src="{{weatherData[2].icon}}"></image>
+                                </view>
+                                <view class="weather_th_cd">{{weatherData[2].weather}}</view>
+                            </view>
+                        </view>
+                    </button>
+                </form>
+            </view>
+        </view>
+        <view class="banner_view" wx:if="{{isViewBannerShow}}">
+            <view class="loadingBG loadingBGBanner" wx:if="{{!isBannerShow}}">
+                <image class="loading" src="../../img/refresh_icon@3x.png"></image>
+            </view>
+            <view wx:if="{{isBannerShow}}">
+                <view class="banner_header">
+                    <view class="header_title">热门工具</view>
+                    <view bindtap="bannerHide" class="header_fold" wx:if="{{cesuanItemListNum>8}}">收起</view>
+                    <view bindtap="bannerShow" class="header_fold" wx:if="{{!bannerIsShow}}">展开</view>
+                </view>
+                <view bindtap="redirectBannerUrl" class="banner_content" data-url="{{bannerHeader.landUrl}}" wx:if="{{isShowHeaderBanner}}">
+                    <view class="banner_topItemIcon">
+                        <image src="{{bannerHeader.img}}"></image>
+                    </view>
+                    <view class="banner_topItemMiddle">
+                        <view class="banner_topItemTitle">{{bannerHeader.title}}</view>
+                        <view class="banner_topItemDesc">{{bannerHeader.desc}}</view>
+                    </view>
+                    <view class="banner_link">
+                        <view class="banner_linkInner">{{bannerHeader.btnDesc}}</view>
+                    </view>
+                </view>
+                <view class="banner_itemList">
+                    <view class="banner_row  {{item.length==4?'':'banner_rowInline'}}" data-index="{{index}}" wx:if="{{index<bannerShowNum}}" wx:for="{{cesuanItemList}}" wx:key="{{index}}">
+                        <view bindtap="redirectBannerUrl" class="banner_item" data-url="{{item.landUrl}}" wx:for="{{item}}" wx:key="{{index}}">
+                            <view class="banner_itemIcon">
+                                <image src="{{item.img}}"></image>
+                            </view>
+                            <view class="banner_itemName">{{item.title}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="astro_view {{isAstroShow?'':'flex'}}" data-name="{{astroData.name}}" formType="submit" hoverClass="none" style="background-image:url({{isAstroShow?astroBGPUrl:''}});" wx:if="{{astroShow}}">
+            <view class="loadingBG astroLaoding" wx:if="{{!isAstroShow}}">
+                <image class="loading" src="../../img/refresh_icon@3x.png"></image>
+            </view>
+            <form bindsubmit="astroViewTap" data-name="{{astroData.starName}}" reportSubmit="true">
+                <button class="astro_top_content flex_row" formType="submit" hoverClass="none" wx:if="{{isAstroShow}}">
+                    <view class="astro_tip_list">
+                        <view class="astro_tip_item">综合运势</view>
+                        <view class="astro_tip_item">幸运颜色</view>
+                        <view class="astro_tip_item">幸运数字</view>
+                        <view class="astro_tip_item">速配星座</view>
+                    </view>
+                    <view class="astro_num_list">
+                        <view class="astro_num_item flex_row">
+                            <view class="astr_star active" wx:if="{{astroData.zhys>=1}}"></view>
+                            <view class="astr_star" wx:else></view>
+                            <view class="astr_star active" wx:if="{{astroData.zhys>=2}}"></view>
+                            <view class="astr_star" wx:else></view>
+                            <view class="astr_star active" wx:if="{{astroData.zhys>=3}}"></view>
+                            <view class="astr_star" wx:else></view>
+                            <view class="astr_star active" wx:if="{{astroData.zhys>=4}}"></view>
+                            <view class="astr_star" wx:else></view>
+                            <view class="astr_star active" wx:if="{{astroData.zhys>=5}}"></view>
+                            <view class="astr_star" wx:else></view>
+                        </view>
+                        <view class="astro_num_item">{{astroData.xyys}}</view>
+                        <view class="astro_num_item">{{astroData.xysz}}</view>
+                        <view class="astro_num_item">{{astroData.spxz}}</view>
+                    </view>
+                    <view class="astro_right_more flex_row">
+                        <picker bindchange="astroPickerChange" catchtap="pickerTap" class="astro_pick" data-picker="picker" range="{{astroList}}" value="{{astroIndex}}">
+                            <view class="astro_change_icon"></view>
+                        </picker>
+                        <div class="picker_holder" style="background-image:url({{astroIconUrl}});">
+              {{astroData.cName}}
+            </div>
+                        <view class="astro_detail">
+                            <image src="{{astroPicUrl}}"></image>
+                        </view>
+                    </view>
+                </button>
+            </form>
+            <form bindsubmit="astroViewTap" data-name="{{astroData.starName}}" reportSubmit="true">
+                <button class="astro_desc" formType="submit" hoverClass="none" wx:if="{{isAstroShow}}">{{showAstroText}}</button>
+            </form>
+        </view>
+        <view bindtap="toXingZuo" class="xingzuo">
+            <image class="xingzuo_img" src="../../img/xz.png"></image>
+        </view>
+        <adCard adImage="{{ad[1].adImage}} " adSource="{{ad[1].adSource}}" adType="{{ad[1].adType}}" desc="{{ad[1].desc}}" title="{{ad[1].title}}" wx:if="{{ad[1].showCard}}"></adCard>
+        <view bind:tap="" class="mryy_view" formType="submit" hoverClass="none" wx:if="{{mryyShow}}">
+            <form bindsubmit="routeDailySign" reportSubmit="true">
+                <button formType="submit" hoverClass="none">
+                    <view class="mryy_title">每日一言</view>
+                    <image class="mryy_img" mode="aspectFill" src="{{mryyData.img}}"></image>
+                    <view class="mryy_txt_wraper">
+                        <view class="yy_txt">
+                            <view class="mryy_inner_txt">{{mryyData.s}}</view>
+                        </view>
+                    </view>
+                </button>
+            </form>
+        </view>
+    </scroll-view>
+</view>

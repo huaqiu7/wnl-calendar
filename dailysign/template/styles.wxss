@@ -1,0 +1,38 @@
+.toast-content-box {
+    position: fixed;
+    bottom: 140rpx;
+    left: 50%;
+    margin-left: -120rpx;
+    z-index: 999;
+}
+
+.toast-content {
+    width: 240rpx;
+    padding: 20rpx 30rpx;
+    background: rgba(17,17,17,.7);
+    border-radius: 10rpx;
+}
+
+.toast-text {
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    font-size: 26rpx;
+    text-align: center;
+}
+
+.tipLeft {
+    display: flex;
+    align-items: center;
+    width: 110rpx;
+    justify-content: flex-end;
+    margin-top: 30rpx;
+    height: 60rpx;
+    font-size: 13px;
+    line-height: 60rpx;
+    color: #333;
+    padding: 0 30rpx;
+    border-radius: 0 29rpx 29rpx 0;
+    background-color: #f8f8f8;
+    border: 1px solid #dedede;
+}

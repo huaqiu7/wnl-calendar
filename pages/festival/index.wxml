@@ -1,0 +1,38 @@
+<view class="container">
+    <scroll-view class="top_scroll" scrollTop="{{topScrollNum}}" scrollY="true">
+        <view class="festival_list_content">
+            <view bindtap="sectionTitleTap" class="festival_section jiejiari_section {{jiejiariData.activeClass}}" data-tag="jiejiariData">法定节假日</view>
+            <view class="festival_list jiejiari_list" style="height: {{jiejiariData.height}}px;">
+                <view bind:tap="routeTips" class="festival_item flex_row" data-date="{{item.date}}" data-name="{{item.name}}" wx:for="{{jiejiariData.list}}" wx:key="{{index}}">
+                    <view class="festivel_info">
+                        <view class="festivel_name">{{item.name}}</view>
+                        <view class="festivel_date">{{item.date}}</view>
+                    </view>
+                    <view class="festivel_days">{{item.days}}</view>
+                </view>
+            </view>
+            <view bindtap="sectionTitleTap" class="festival_section term_section {{termData.activeClass}}" data-tag="termData">二十四节气</view>
+            <view class="festival_list term_list" style="height: {{termData.height}}px;">
+                <view bind:tap="routeTips" class="festival_item flex_row" data-date="{{item.date}}" data-name="{{item.name}}" wx:for="{{termData.list}}" wx:key="{{index}}">
+                    <view class="festivel_info">
+                        <view class="festivel_name">{{item.name}}</view>
+                        <view class="festivel_date">{{item.date}}</view>
+                    </view>
+                    <view class="festivel_days">{{item.days}}</view>
+                </view>
+            </view>
+            <view bindtap="sectionTitleTap" class="festival_section hot_section {{hotData.activeClass}}" data-tag="hotData">热门节日</view>
+            <view class="festival_list hot_list" style="height: {{hotData.height}}px;">
+                <view class="section_line"></view>
+                <view bind:tap="routeTips" class="festival_item flex_row" data-date="{{item.date}}" data-name="{{item.name}}" wx:for="{{hotData.list}}" wx:key="{{index}}">
+                    <view class="festivel_info">
+                        <view class="festivel_name">{{item.name}}</view>
+                        <view class="festivel_date">{{item.date}}</view>
+                    </view>
+                    <view class="festivel_days">{{item.days}}</view>
+                </view>
+            </view>
+        </view>
+        <adCard adImage="{{ad[0].adImage}}" adSource="{{ad[0].adSource}}" adType="{{ad[0].adType}}" wx:if="{{ad[0].showCard}}"></adCard>
+    </scroll-view>
+</view>

@@ -1,0 +1,79 @@
+<block wx:if="{{loadComplete}}">
+    <import src="../toast/toast.wxml"></import>
+    <import src="../../template/styles.wxml"></import>
+    <view>
+        <template is="toast" data="{{..._toast_}}"></template>
+        <view class="{{!isHuawei?'main index':'main index huawei'}}" wx:if="{{!loading}}">
+            <view catchtap="prev" class="{{nowIndex===0?'left-icon slide-icon hidden':'left-icon slide-icon show'}}"></view>
+            <view catchtap="next" class="{{isToday?'right-icon slide-icon hidden':'right-icon slide-icon show'}}"></view>
+            <swiper bindchange="changeIndex" circular="{{!isToday}}" class="swiper-view" current="{{swiperIndex}}" duration="{{duration}}" style="height:1000rpx">
+                <swiper-item bindtap="{{!itemClicked?'display':''}}" bindtouchend="touchEnd" bindtouchmove="touchMove" bindtouchstart="touchStart" class="daily-view" data-datekey="{{item.dateKey}}" data-day="{{item.day}}" data-index="{{index}}" data-month="{{item.month}}" data-year="{{item.year}}" wx:for="{{history}}" wx:key="index">
+                    <block wx:if="{{style0}}">
+                        <template is="style0Temp" data="{{item:item,signdays:signdays}}" wx:if="{{item.content}}"></template>
+                        <template is="style0NoContentTemp" data="{{item:item}}" wx:else></template>
+                    </block>
+                    <block wx:if="{{style1}}">
+                        <template is="style1Temp" data="{{item:item,signdays:signdays}}" wx:if="{{item.content}}"></template>
+                        <template is="style1NoContentTemp" data="{{item:item}}" wx:else></template>
+                    </block>
+                    <block wx:if="{{style2}}">
+                        <template is="style2Temp" data="{{item:item,signdays:signdays}}" wx:if="{{item.content}}"></template>
+                        <template is="style2NoContentTemp" data="{{item:item}}" wx:else></template>
+                    </block>
+                    <block wx:if="{{style3}}">
+                        <template is="style3Temp" data="{{item:item,signdays:signdays}}" wx:if="{{item.content}}"></template>
+                        <template is="style3NoContentTemp" data="{{item:item}}" wx:else></template>
+                    </block>
+                    <block wx:if="{{style4}}">
+                        <template is="style4Temp" data="{{item:item,signdays:signdays}}" wx:if="{{item.content}}"></template>
+                        <template is="style4NoContentTemp" data="{{item:item}}" wx:else></template>
+                    </block>
+                    <block wx:if="{{style5}}">
+                        <template is="style5Temp" data="{{item:item,signdays:signdays}}" wx:if="{{item.content}}"></template>
+                        <template is="style5NoContentTemp" data="{{item:item}}" wx:else></template>
+                    </block>
+                </swiper-item>
+            </swiper>
+            <view class="out_view" wx:if="{{isToday}}">
+                <image bindtap="routeIndex" class="back_index_img" src="../images/back_index.png" wx:if="{{showBackIndex}}"></image>
+                <view class="{{!isHuawei?'sign-content':'sign-content huawei'}}">
+                    <view class="tip">{{tiptxt}}</view>
+                    <view bindtap="signOn" class="sign">{{signtxt}}</view>
+                </view>
+            </view>
+            <view class="out_view" wx:if="{{!isToday}}">
+                <image bindtap="routeIndex" class="back_index_img nottoday" src="../images/back_index.png" wx:if="{{showBackIndex}}"></image>
+                <view bindtap="backToday" class="switch-content back-today">
+                    <view class="today-icon"></view>
+                    <view class="switch-tip">回到今天</view>
+                </view>
+            </view>
+        </view>
+        <view class="canvas-group">
+            <canvas canvasId="style0"></canvas>
+        </view>
+        <view>
+            <loading wx:if="{{showLoading}}">请稍后...</loading>
+            <loading wx:if="{{loading}}">加载中...</loading>
+        </view>
+        <button binderror="launchAppError" class="launch-btn" openType="launchApp" wx:if="{{launchApp}}">
+            <image class="launch-btn" src="../images/wnl-icon@2x.png"></image>
+        </button>
+        <view class="mask" wx:if="{{showPop}}"></view>
+        <view class="pop" wx:if="{{showPop}}">
+            <view class="pop-title">已签到</view>
+            <view class="pop-content">
+                <view class="pop-day">
+                    <text class="signdays">{{signdays}}</text>天</view>
+            </view>
+            <view class="pop-btn">
+                <button bindtap="saveSign" class="btn left-btn">保存日签</button>
+                <button class="btn right-btn" openType="share">立马分享</button>
+            </view>
+            <view bindtap="closePop" class="close-content">
+                <view class="close-icon"></view>
+            </view>
+        </view>
+    </view>
+</block>
+<image class="loading-img" src="../images/refresh_icon@3x.png" wx:else></image>

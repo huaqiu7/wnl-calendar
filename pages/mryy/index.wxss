@@ -1,0 +1,64 @@
+.img_wrapper {
+    position: relative;
+    margin: 0 auto;
+}
+
+.day_info {
+    position: absolute;
+    font-size: 0;
+    left: 26.5px;
+    bottom: 85px;
+}
+
+.day_number,.day_other {
+    display: inline-block;
+    vertical-align: bottom;
+    text-shadow: .5px .9px 1px rgba(0,0,0,.5);
+}
+
+.day_number {
+    font-size: 60px;
+    line-height: 44px;
+    color: #fff;
+}
+
+.day_other {
+    font-size: 13px;
+    line-height: 1;
+    font-weight: 500;
+    text-align: left;
+    color: #fff;
+    margin-left: 10px;
+}
+
+.yy_txt {
+    position: absolute;
+    left: 26.5px;
+    right: 26.5px;
+    bottom: 35px;
+}
+
+.mryy_inner_txt {
+    display: inline-block;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: justify;
+    color: #fff;
+    text-shadow: .5px .9px 1px rgba(0,0,0,.5);
+}
+
+.yy_txt.multiple_line {
+    bottom: 25px;
+}
+
+@media only screen and (max-width:320px),screen and (max-width:320px) {
+    .day_info.multiple_line {
+        bottom: 90px;
+    }
+}
+
+@media only screen and (min-width:376px),screen and (min-width:376px) {
+    .day_info.multiple_line {
+        bottom: 90px;
+    }
+}

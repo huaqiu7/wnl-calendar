@@ -1,0 +1,227 @@
+.main-content {
+    margin: 50rpx 40rpx 0;
+    position: relative;
+    padding: 18rpx 15rpx 22rpx;
+    background-size: 100% 100%;
+}
+
+.wnl-info {
+    height: 899rpx;
+    box-sizing: border-box;
+    display: block;
+    position: relative;
+}
+
+.logo-content {
+    margin-top: 40rpx;
+}
+
+.logoPic {
+    width: 120rpx;
+    height: 120rpx;
+    margin: 0 auto;
+}
+
+.logoPic image {
+    height: 100%;
+    width: 100%;
+}
+
+.logo-txt {
+    line-height: 1;
+    color: #333;
+    margin-top: 20rpx;
+}
+
+.logo-txt,.userNum {
+    font-size: 17px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.userNum {
+    margin: 40rpx auto 0;
+    width: 365rpx;
+    height: 80rpx;
+    position: relative;
+    background-image: url("https://mobile.51wnl.com/wxapp_resource/wxapp_wnl/tag-icon.png");
+    background-size: 100% 100%;
+    line-height: 68rpx;
+    color: #fff;
+}
+
+.userNum image {
+    height: 100%;
+    width: 100%;
+}
+
+.wnl-desc {
+    padding-top: 55rpx;
+    width: 500rpx;
+    margin: 0 auto;
+    position: relative;
+}
+
+.wnl-txt {
+    font-size: 14px;
+    line-height: 1;
+    text-align: center;
+    color: #333;
+    clear: both;
+    margin-bottom: 16rpx;
+    position: relative;
+}
+
+.leaves {
+    height: 120rpx;
+    width: 60rpx;
+}
+
+.leaves image {
+    height: 100%;
+    width: 100%;
+}
+
+.left-leaves {
+    left: 0;
+}
+
+.left-leaves,.right-leaves {
+    position: absolute;
+    top: 55rpx;
+}
+
+.right-leaves {
+    right: 0;
+}
+
+.splitLine {
+    height: 1px;
+    background-color: #ffc427;
+    margin: 82rpx 40rpx 0;
+}
+
+.wnl_desc_content {
+    margin: 50rpx 38rpx 0;
+}
+
+.wnl_desc {
+    flex: auto;
+}
+
+.wnl_company {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.wnl_company,.wnl_intro {
+    line-height: 1;
+    color: #333;
+}
+
+.wnl_intro {
+    font-size: 14px;
+}
+
+.wnl_intro:nth-child(1)::after {
+    content: "m.51wnl.com";
+    font-size: 14px;
+    line-height: 1;
+    text-align: left;
+    color: #999;
+    margin-left: 46rpx;
+}
+
+.wnl_intro:nth-child(2)::after {
+    content: "youloftwnl";
+    font-size: 14px;
+    line-height: 1;
+    text-align: left;
+    color: #999;
+    margin-left: 20rpx;
+}
+
+.wnl_intro:nth-child(3)::after {
+    content: "186720268";
+    font-size: 14px;
+    line-height: 1;
+    text-align: left;
+    color: #999;
+    margin-left: 30rpx;
+}
+
+.wnl_intro:nth-child(4)::after {
+    content: "weibo.com/51wnl";
+    font-size: 14px;
+    line-height: 1;
+    text-align: left;
+    color: #999;
+    margin-left: 46rpx;
+}
+
+.wnl_intro+.wnl_intro {
+    margin-top: 11px;
+}
+
+.wnl_qrcode {
+    flex: none;
+}
+
+.wnl_qrcode_img {
+    width: 119rpx;
+    height: 119rpx;
+}
+
+.gzh_tip {
+    font-size: 12px;
+    text-align: center;
+    line-height: 1;
+    color: #777;
+    margin-top: 7px;
+}
+
+.copyright {
+    margin-top: 40rpx;
+}
+
+.copyright-zh {
+    line-height: 1.08;
+    color: #333;
+}
+
+.copyright-en,.copyright-zh {
+    font-size: 12px;
+    text-align: center;
+}
+
+.copyright-en {
+    line-height: 1.18;
+    color: #777;
+    margin: 10rpx auto 20rpx;
+}
+
+.border {
+    transform: scale(.5);
+    position: absolute;
+    border: 1px solid #f9b90e;
+    top: -50%;
+    right: -50%;
+    bottom: -50%;
+    left: -50%;
+    z-index: 0;
+}
+
+@media only screen and (max-device-width:320px),screen and (max-width:320px) {
+    .copyright-en,.copyright-zh {
+        transform: scale(.85);
+    }
+
+    .userNum {
+        font-size: 13px;
+    }
+
+    .wnl-txt {
+        font-size: 12px;
+    }
+}

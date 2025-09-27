@@ -1,0 +1,25 @@
+<import src="../../template/styles.wxml"></import>
+<import src="../toast/toast.wxml"></import>
+<template is="toast" data="{{..._toast_}}"></template>
+<view class="{{!isHuawei?'main':'main huawei'}}">
+    <template is="style0NoContentTemp" data="{{item:item}}" wx:if="{{style0}}"></template>
+    <template is="style1NoContentTemp" data="{{item:item}}" wx:if="{{style1}}"></template>
+    <template is="style2NoContentTemp" data="{{item:item}}" wx:if="{{style2}}"></template>
+    <template is="style3NoContentTemp" data="{{item:item}}" wx:if="{{style3}}"></template>
+    <template is="style4NoContentTemp" data="{{item:item}}" wx:if="{{style4}}"></template>
+    <template is="style5NoContentTemp" data="{{item:item}}" wx:if="{{style5}}"></template>
+    <view class="{{isHuawei?'big-btn huawei':'big-btn'}}">
+        <button class="new-btn" openType="share">分享</button>
+        <button bindtap="saveSign" class="new-btn">保存日签</button>
+    </view>
+    <view bindtap="switchStyle" class="{{isHuawei?'btn-style huawei':'btn-style'}}">
+        <view class="switch-icon"></view>
+        <view class="switch-tip">切换样式</view>
+    </view>
+</view>
+<view class="canvas-group">
+    <canvas canvasId="style0" style="width:{{cw}}px;height:{{ch}}px"></canvas>
+</view>
+<view>
+    <loading wx:if="{{showLoading}}">请稍后</loading>
+</view>

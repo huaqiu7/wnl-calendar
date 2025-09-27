@@ -1,0 +1,366 @@
+<template name="style5NoContentTemp">
+    <view class="daily-sign style6" style="margin:32rpx {{iscs?'15':'30'}}rpx 0;">
+        <view class="inside-content" style="position:relative;">
+            <image mode="aspectFill" src="{{item.largeImage}}" style="position:absolute;width:100%;height:100%"></image>
+            <view class="style6-content0">
+                <view class="style6-content">
+                    <view>
+                        <view class="date-num">{{item.day}}</view>
+                        <view class="enmw">
+                            <view style="margin-top:20rpx">{{item.enMonth}}  {{item.enWeek}}</view>
+                        </view>
+                    </view>
+                    <view style="width:100%;height:1px;background-color:#ffffff"></view>
+                    <view class="desc">{{item.dayText}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="style4NoContentTemp">
+    <view class="daily-sign style5" style="margin:32rpx {{iscs?'15':'30'}}rpx 0;">
+        <view class="inside-content" style="position:relative;">
+            <view class="style5-imageBox">
+                <image class="style5-image" mode="aspectFill" src="{{item.img}}" style="width:{{iscs?'638':'670'}}rpx;height:{{iscs?'337':'354'}}rpx;"></image>
+            </view>
+            <view class="style5-content-special" style="top:{{iscs?'437':'454'}}rpx">
+                <view>
+                    <view class="date-num">{{item.day}}</view>
+                    <view class="enmw">
+                        <view style="margin-top:20rpx">{{item.enMonth}}  {{item.enWeek}}</view>
+                    </view>
+                </view>
+                <view class="desc">{{item.dayText}}</view>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="style3NoContentTemp">
+    <view class="daily-sign style4" style="margin:32rpx {{iscs?'15':'30'}}rpx 0;">
+        <view class="inside-content" style="position:relative;">
+            <image mode="aspectFill" src="{{item.largeImage}}" style="position:absolute;width:100%;height:100%"></image>
+            <view class="style6-content0">
+                <view>
+                    <view class="date-num">{{item.day}}
+            </view>
+                    <view class="enmw">{{item.enMonth}}  {{item.enWeek}}
+            </view>
+                </view>
+                <view class="desc">{{item.dayText}}</view>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="style2NoContentTemp">
+    <view class="daily-sign style3" style="margin:32rpx {{iscs?'15':'30'}}rpx 0;">
+        <view class="inside-content" style="position:relative;">
+            <image mode="aspectFill" src="{{item.largeImage}}" style="position:absolute;width:100%;height:100%"></image>
+            <view class="date-section-content">
+                <view class="date-num-content">
+                    <view class="new-date">{{item.month}}.{{item.day}}</view>
+                    <view class="weekday">{{item.weekText}}</view>
+                </view>
+                <view class="date-detail-content">
+                    <view class="left-content">{{item.chiMonth}}{{item.chiDay}}</view>
+                    <view class="right-content">{{item.gYear}}属{{item.animalYear}}</view>
+                </view>
+            </view>
+            <view class="style6-content0">
+                <view class="desc">{{item.dayText}}</view>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="style1NoContentTemp">
+    <view class="daily-sign style2" style="margin:32rpx {{iscs?'15':'30'}}rpx 0;">
+        <view class="inside-content">
+            <view class="date-section">
+                <view class="icon"></view>
+                <view class="date-section-content">
+                    <view class="date-num-content">
+                        <view class="new-date">{{item.month}}.{{item.day}}</view>
+                        <view class="weekday">{{item.weekText}}</view>
+                    </view>
+                    <view class="date-detail-content">
+                        <view class="left-content temp-content">{{item.chiMonth}}{{item.chiDay}}</view>
+                        <view class="right-content temp-content">{{item.gYear}}属{{item.animalYear}}</view>
+                    </view>
+                </view>
+                <view class="festival" wx:if="{{item.festival}}">{{item.festival}}</view>
+            </view>
+            <view class="detali-section">
+                <image src="{{item.largeImage}}"></image>
+            </view>
+            <view class="desc-section" style="flex-direction: column;">
+                <view class="buttom-sign-tip" wx:if="{{item.rIndex}}">
+                    <image class="reddot bottom" src="../images/reddot_icon@2x.png"></image>
+                    <text class="reddot-text">第{{item.largerIndex}}天</text>
+                    <image class="reddot bottom" src="../images/reddot_icon@2x.png"></image>
+                </view>
+                <view class="sign-times" wx:else></view>
+                <view class="middle">
+                    <view class="desc">{{item.dayText}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="style0NoContentTemp">
+    <view class="daily-sign style1" style="margin:32rpx {{iscs?'15':'30'}}rpx 0;">
+        <view class="inside-content">
+            <view class="date-section">
+                <view class="new-date">{{item.year}}年{{item.month}}月</view>
+                <view class="old-date">农历{{item.chiMonth}}{{item.chiDay}}</view>
+                <view class="date-num-content">
+                    <view class="date-num">{{item.day}}</view>
+                </view>
+                <view class="festival-content" wx:if="{{item.festival}}">
+                    <view class="line"></view>
+                    <view class="festival">{{item.festival}}</view>
+                    <view class="line"></view>
+                </view>
+            </view>
+            <view class="detali-section">
+                <view class="icon"></view>
+                <view class="tiangan">
+                    <text>{{item.gYear}}</text>
+                    <text>·</text>
+                    <text>{{item.gMonth}}</text>
+                    <text>·</text>
+                    <text>{{item.gDay}}</text>
+                </view>
+                <view class="yiji">
+                    <view class="yi">宜</view>
+                    <view class="title">{{item.yi}}</view>
+                    <view class="ji">忌</view>
+                    <view class="title">{{item.ji}}</view>
+                </view>
+            </view>
+            <view class="desc-section">
+                <view class="buttom-sign-tip" wx:if="{{item.rIndex}}">
+                    <image class="reddot bottom" src="../images/reddot_icon@2x.png"></image>
+                    <text class="reddot-text">第{{item.largerIndex}}天</text>
+                    <image class="reddot bottom" src="../images/reddot_icon@2x.png"></image>
+                </view>
+                <view class="sign-times" wx:else></view>
+                <view class="middle">
+                    <view class="desc">{{item.dayText}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="information">
+    <view catchtap="toWebPage" data-did="{{content.detailID}}" data-dk="{{dateKey}}">
+        <view class="inf-text">{{content.title}}</view>
+        <view class="inf-imggroup">
+            <image class="inf-pic" mode="widthFix" src="{{content.imgs[0]}}"></image>
+            <image class="center-pic" mode="widthFix" src="{{content.imgs[1]}}"></image>
+            <image class="inf-pic" mode="widthFix" src="{{content.imgs[2]}}"></image>
+        </view>
+    </view>
+</template>
+<template name="style5Temp">
+    <view class="daily-sign style6">
+        <view class="temp-box">
+            <view class="inside-content-temp">
+                <image mode="aspectFill" src="{{item.largeImage}}" style="position:absolute;width:100%;height:100%"></image>
+                <view class="style6-content0">
+                    <view class="style6-content">
+                        <view>
+                            <view class="date-num">{{item.day}}</view>
+                            <view class="enmw">
+                                <view style="font-size:30rpx">
+                                    <text style="margin-right:10rpx" wx:if="{{item.festival}}">{{item.festival}}</text>
+                                    <text wx:if="{{item.rIndex}}">签到第{{item.largerIndex}}天</text>
+                                </view>
+                                <view style="margin-top:20rpx">{{item.enMonth}}  {{item.enWeek}}</view>
+                            </view>
+                            <image class="logo-icon" src="../images/logo-icon@3x.png"></image>
+                        </view>
+                        <view style="width:100%;height:1px;background-color:#ffffff"></view>
+                        <view class="desc">{{item.dayText}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="desc-section temp3">
+                <template is="information" data="{{content:item.content,dateKey:item.dateKey}}"></template>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="style4Temp">
+    <view class="daily-sign style5">
+        <view class="temp-box">
+            <view class="inside-content-temp">
+                <view class="style5-imageBox">
+                    <image class="style5-image temp" mode="aspectFill" src="{{item.img}}"></image>
+                </view>
+                <view class="style5-content-special" style="padding-bottom:20rpx">
+                    <view>
+                        <view class="date-num" style="margin-bottom:20rpx">{{item.day}}</view>
+                        <view class="enmw">
+                            <view style="font-size:30rpx;">
+                                <text style="margin-right:50rpx" wx:if="{{item.festival}}">{{item.festival}}</text>
+                                <text style="color:rgba(210,64,64,1);" wx:if="{{item.rIndex}}">签到第{{item.largerIndex}}天</text>
+                            </view>
+                            <view style="margin-top:20rpx">{{item.enMonth}}  {{item.enWeek}}</view>
+                        </view>
+                        <image class="logo-icon" src="../images/logo-icon@3x.png"></image>
+                    </view>
+                    <view class="desc">{{item.dayText}}</view>
+                </view>
+            </view>
+            <view class="desc-section temp2">
+                <template is="information" data="{{content:item.content,dateKey:item.dateKey}}"></template>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="style3Temp">
+    <view class="daily-sign style4">
+        <view class="temp-box">
+            <view class="inside-content-temp">
+                <image mode="aspectFill" src="{{item.largeImage}}" style="position:absolute;width:100%;height:100%"></image>
+                <view class="style6-content0">
+                    <view>
+                        <view class="date-num">
+                            <text>{{item.day}}</text>
+                            <text class="festival" wx:if="{{item.festival}}">{{item.festival}}</text>
+                        </view>
+                        <view class="enmw">
+                            <text>{{item.enMonth}}  {{item.enWeek}}</text>
+                            <text class="sign" wx:if="{{item.rIndex}}">签到第{{item.largerIndex}}天</text>
+                            <image class="logo-icon" src="../images/logo-icon@3x.png"></image>
+                        </view>
+                    </view>
+                    <view class="desc">{{item.dayText}}</view>
+                </view>
+            </view>
+            <view class="desc-section temp3">
+                <template is="information" data="{{content:item.content,dateKey:item.dateKey}}"></template>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="style2Temp">
+    <view class="daily-sign temp style3">
+        <view class="temp-box">
+            <view class="inside-content-temp">
+                <image mode="aspectFill" src="{{item.largeImage}}" style="position:absolute;width:100%;height:712rpx"></image>
+                <view class="sign" wx:if="{{item.rIndex}}">签到第{{item.largerIndex}}天</view>
+                <view class="date-section-content">
+                    <view class="date-num-content">
+                        <view class="new-date">{{item.month}}.{{item.day}}</view>
+                        <view class="weekday">{{item.weekText}}</view>
+                    </view>
+                    <view class="date-detail-content">
+                        <view class="left-content">{{item.chiMonth}}{{item.chiDay}}</view>
+                        <view class="right-content">{{item.gYear}}属{{item.animalYear}}</view>
+                    </view>
+                    <view class="festival" wx:if="{{item.festival}}">{{item.festival}}</view>
+                </view>
+                <image class="logo-icon" src="../images/logo-icon@3x.png" style="top:{{item.festival?'482':'422'}}rpx"></image>
+                <view class="style6-content0">
+                    <view class="desc">{{item.dayText}}</view>
+                </view>
+            </view>
+            <view class="desc-section temp3">
+                <template is="information" data="{{content:item.content,dateKey:item.dateKey}}"></template>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="style1Temp">
+    <view class="daily-sign temp style2">
+        <view class="inside-content">
+            <view class="date-section">
+                <view class="icon temp"></view>
+                <view class="date-group">
+                    <view>
+                        <view class="date-section-content">
+                            <view class="date-num-content">
+                                <view class="new-date">{{item.month}}.{{item.day}}</view>
+                                <view class="weekday">{{item.weekText}}</view>
+                            </view>
+                            <view class="date-detail-content">
+                                <view class="left-content temp-content">{{item.chiMonth}}{{item.chiDay}}</view>
+                                <view class="right-content temp-content">{{item.gYear}}属{{item.animalYear}}</view>
+                            </view>
+                        </view>
+                        <view class="festival" wx:if="{{item.festival}}">{{item.festival}}</view>
+                        <view class="tip-left" wx:if="{{item.rIndex}}">
+                            <view class="tip-left" wx:if="{{item.rIndex}}">
+                                <image class="reddot" src="../images/reddot_icon@2x.png"></image>
+                                <text class="reddot-text">签到第{{item.largerIndex}}天</text>
+                                <image class="reddot" src="../images/reddot_icon@2x.png"></image>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="{{item.festival?'words festival-sign':'words sign'}}" wx:if="{{item.rIndex}}">
+                    <view class="desc temp">{{item.dayText}}</view>
+                </view>
+                <view class="{{item.festival?'words festival':'words'}}" wx:else>
+                    <view class="desc temp">{{item.dayText}}</view>
+                </view>
+            </view>
+            <view class="detali-section">
+                <image src="{{item.largeImage}}"></image>
+            </view>
+            <view class="desc-section temp">
+                <template is="information" data="{{content:item.content,dateKey:item.dateKey}}"></template>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="style0Temp">
+    <view class="daily-sign temp style1">
+        <view class="inside-content">
+            <view class="date-section">
+                <view class="tip-left" wx:if="{{item.rIndex}}">
+                    <image class="reddot" src="../images/reddot_icon@2x.png"></image>
+                    <text class="reddot-text">签到第{{item.largerIndex}}天</text>
+                    <image class="reddot" src="../images/reddot_icon@2x.png"></image>
+                </view>
+                <view class="{{!item.festival?'tip-left-empty':'tip-left-empty hasfestival'}}" wx:else></view>
+                <view class="new-date tep">{{item.year}}年{{item.month}}月</view>
+                <view class="old-date tep">农历{{item.chiMonth}}{{item.chiDay}}</view>
+                <view class="date-num-content tep">
+                    <view class="date-num">{{item.day}}</view>
+                </view>
+                <view class="middle"></view>
+                <view style="height:32rpx;width100%;" wx:if="{{item.festival}}"></view>
+                <view class="festival-content" wx:if="{{item.festival}}">
+                    <view class="line"></view>
+                    <view class="festival">{{item.festival}}</view>
+                    <view class="line"></view>
+                </view>
+                <view style="height:20rpx;width100%;" wx:if="{{item.festival}}"></view>
+                <view style="height:86rpx;width100%;" wx:else></view>
+                <view class="desc-section1">
+                    <view class="desc temp">{{item.dayText}}</view>
+                </view>
+            </view>
+            <view class="detali-section">
+                <view class="icon"></view>
+                <view class="tiangan">
+                    <text>{{item.gYear}}</text>
+                    <text>·</text>
+                    <text>{{item.gMonth}}</text>
+                    <text>·</text>
+                    <text>{{item.gDay}}</text>
+                </view>
+                <view class="yiji">
+                    <view class="yi">宜</view>
+                    <view class="title">{{item.yi}}</view>
+                    <view class="ji">忌</view>
+                    <view class="title">{{item.ji}}</view>
+                </view>
+            </view>
+            <view class="desc-section temp" wx:if="{{item.content}}">
+                <template is="information" data="{{content:item.content,dateKey:item.dateKey}}"></template>
+            </view>
+        </view>
+    </view>
+</template>

@@ -1,0 +1,384 @@
+@font-face {
+    font-family: astro;
+    src: url("https://qiniu.image.cq-wnl.com/content/20180920e092e389ed6448ff812246983a70865b.ttf");
+}
+
+.astro_wrapper,.container,page {
+    background: linear-gradient(#181e3e,#070917);
+    color: #fff;
+    height: auto;
+}
+
+.astro_wrapper,.container {
+    padding-bottom: 15px;
+}
+
+.astro_header {
+    padding: 0;
+}
+
+.astro_header_middle {
+    width: 279px;
+    height: 92px;
+    margin: 10px auto 0;
+    background: url("https://qiniu.image.cq-wnl.com/content/2018092051c7f62028a44b898d3903cf5b616dca.png") 50% no-repeat;
+    background-size: cover;
+    text-align: center;
+    position: relative;
+}
+
+.header_top {
+    padding-top: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.astro_img {
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+
+.astro_bg_img {
+    position: absolute;
+    left: 50%;
+    top: -10px;
+    height: 100%;
+    width: 55px;
+    margin-left: -27px;
+    opacity: .2;
+}
+
+.astro_bg_img.aries {
+    width: 55px;
+    height: 44px;
+    margin-left: -27px;
+}
+
+.astro_bg_img.aquarius {
+    width: 125px;
+    margin-left: -62px;
+}
+
+.astro_bg_img.cancer {
+    width: 67px;
+    margin-left: -33px;
+}
+
+.astro_bg_img.capricorn {
+    width: 105px;
+    margin-left: -52px;
+}
+
+.astro_bg_img.gemini {
+    width: 88px;
+    margin-left: -44px;
+}
+
+.astro_bg_img.leo {
+    width: 110px;
+    margin-left: -55px;
+}
+
+.astro_bg_img.libra {
+    width: 82px;
+    margin-left: -41px;
+}
+
+.astro_bg_img.pisces {
+    width: 142px;
+    margin-left: -71px;
+}
+
+.astro_bg_img.sagittarius {
+    width: 120px;
+    margin-left: -60px;
+}
+
+.astro_bg_img.scorpio {
+    width: 107px;
+    margin-left: -53px;
+}
+
+.astro_bg_img.taurus {
+    width: 108px;
+    margin-left: -54px;
+}
+
+.astro_bg_img.virgo {
+    width: 134px;
+    margin-left: -67px;
+}
+
+.astro_name {
+    font-family: astro;
+    font-size: 32px;
+    margin: 0 10px;
+    line-height: 1;
+}
+
+.astro_select_icon {
+    width: 14px;
+    height: 14px;
+}
+
+.astro_en_name {
+    font-size: 12px;
+    line-height: 1;
+    margin: 8px 0 4px;
+}
+
+.astro_date {
+    font-size: 12px;
+    color: #d0d0d4;
+}
+
+.astro_detail_wrapper {
+    margin: 0 7px;
+    border-image: url("https://qiniu.image.cq-wnl.com/content/2018092063fe577cffae4051b28aa8453bb751b7.svg") 20;
+    border-width: 20px;
+    border-style: solid;
+}
+
+.tab_list {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tab_list::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: hsla(0,0%,100%,.2);
+    transform: scaleY(.5);
+}
+
+.tab_item {
+    text-align: center;
+    flex: 1;
+    line-height: 1;
+    padding: 7px 0 8px;
+}
+
+.tab_item.active {
+    color: #fff;
+}
+
+.tab_item_inner {
+    font-size: 13px;
+    text-align: center;
+    position: relative;
+}
+
+.tab_item.active .tab_item_inner::after {
+    position: absolute;
+    content: "";
+    width: 26px;
+    height: 2px;
+    bottom: -7px;
+    left: 50%;
+    margin-left: -13px;
+    background: #fff;
+}
+
+.astro_infos {
+    display: block;
+    padding: 12px 0 0;
+    border-bottom: 1px solid hsla(0,0%,100%,.2);
+}
+
+.astro_infos.nonum {
+    border: none;
+}
+
+.today_date {
+    font-size: 13px;
+}
+
+.astro_num {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.astro_num_item {
+    text-align: center;
+}
+
+.astro_num_tip {
+    color: #f9b90e;
+    font-size: 12px;
+}
+
+.astro_num_txt {
+    font-size: 15px;
+    color: #fff;
+    text-align: center;
+    margin-top: 4px;
+}
+
+.astro_info_item {
+    margin-top: 15px;
+}
+
+.astro_info_tip {
+    display: flex;
+    align-items: center;
+}
+
+.astro_item_tip {
+    font-size: 17px;
+    line-height: 17px;
+    font-weight: 500;
+}
+
+.astro_star_list {
+    float: left;
+    margin-left: 10px;
+    justify-content: flex-start;
+}
+
+.astr_star {
+    width: 13px;
+    height: 13px;
+    margin-right: 5px;
+    background-image: url("https://www.51wnl.com/wxapp_resource/wnl/star.png");
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.astr_star.star_first {
+    background-image: url("https://qiniu.image.cq-wnl.com/content/201809207a433d725a224aed9ec20017a015d8d5.png");
+}
+
+.astr_star.star_second {
+    background-image: url("https://qiniu.image.cq-wnl.com/content/20180920f9a92af7bee942fe9990bbb955624e2f.png");
+}
+
+.astr_star.star_third {
+    background-image: url("https://qiniu.image.cq-wnl.com/content/201809204ac7187ecb1a4c50ae119a128d434aa4.png");
+}
+
+.astr_star.star_fourth {
+    background-image: url("https://qiniu.image.cq-wnl.com/content/20180920f3210a315d164e5a8d4ef3cbfbca4c49.png");
+}
+
+.astr_star.star_first.active {
+    background-image: url("https://qiniu.image.cq-wnl.com/content/2018092099565169ec9148f3894fc42876676515.png");
+}
+
+.astr_star.star_second.active {
+    background-image: url("https://qiniu.image.cq-wnl.com/content/201809203fc2b9d7327945389859cac35c5cf7e8.png");
+}
+
+.astr_star.star_third.active {
+    background-image: url("https://qiniu.image.cq-wnl.com/content/201809207ffdb8358ccb4eb68f444eaf42b58057.png");
+}
+
+.astr_star.star_fourth.active {
+    background-image: url("https://qiniu.image.cq-wnl.com/content/201809202644195779c64ac1b5a99bf50154d660.png");
+}
+
+.astro_info_txt {
+    padding-top: 7px;
+    color: #d0d0d4;
+    font-size: 15px;
+    line-height: 23px;
+    text-align: justify;
+}
+
+.astro_list {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    color: #333;
+    opacity: 0;
+    z-index: -100;
+}
+
+.astro_list.show {
+    opacity: 1;
+    z-index: 1;
+}
+
+.astro_list_inner {
+    position: fixed;
+    top: 50%;
+    left: 40rpx;
+    right: 40rpx;
+    margin-top: -440rpx;
+    opacity: 1;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px 15px;
+}
+
+.astro_tip {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.astro_temp_list {
+    opacity: 1;
+    background: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.astro_temp {
+    box-sizing: border-box;
+    width: 31%;
+    width: calc((100% - 20px) / 3);
+    height: 59px;
+    background: #f6f6f6;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding-top: 9px;
+}
+
+.astro_temp:nth-last-of-type(1),.astro_temp:nth-last-of-type(2),.astro_temp:nth-last-of-type(3) {
+    margin-bottom: 0;
+}
+
+.astro_temp.active {
+    background: #789bdf;
+}
+
+.astro_temp.active .temp_date,.astro_temp.active .temp_name {
+    color: #fff;
+}
+
+.temp_name {
+    font-family: astro;
+    font-size: 17px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.temp_date {
+    font-size: 14px;
+    color: #999;
+}
+
+.astro_close_icon {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    bottom: -60px;
+    left: 50%;
+    margin-left: -15px;
+    z-index: 2;
+}

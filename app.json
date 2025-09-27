@@ -1,0 +1,82 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/lunar/index",
+        "pages/festival/index",
+        "pages/discovery/index",
+        "pages/astro/index",
+        "pages/mryy/index",
+        "pages/weather/index",
+        "pages/webview/webview",
+        "components/adCard/adCard"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#d03f3f",
+        "navigationBarTitleText": "一淘模板源码",
+        "navigationBarTextStyle": "white",
+        "backgroundTextStyle": "light",
+        "enablePullDownRefresh": false
+    },
+    "tabBar": {
+        "color": "#999999",
+        "selectedColor": "#d03f3f",
+        "backgroundColor": "#ffffff",
+        "borderStyle": "white",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "万年历",
+                "iconPath": "img/tab_wnl.png",
+                "selectedIconPath": "img/tab_wnl_active.png"
+            },
+            {
+                "pagePath": "pages/lunar/index",
+                "text": "黄历",
+                "iconPath": "img/tab_hl.png",
+                "selectedIconPath": "img/tab_hl_active.png"
+            },
+            {
+                "pagePath": "pages/festival/index",
+                "text": "节日",
+                "iconPath": "img/tab_jr.png",
+                "selectedIconPath": "img/tab_jr_active.png"
+            }
+        ]
+    },
+    "subPackages": [
+        {
+            "root": "dailysign/",
+            "pages": [
+                "pages/index/index",
+                "pages/detail/detail",
+                "pages/changestyle/changestyle",
+                "pages/webpage/webpage",
+                "pages/contentpage/contentpage"
+            ]
+        },
+        {
+            "root": "tips/",
+            "pages": [
+                "pages/index/index",
+                "pages/webview/index"
+            ]
+        },
+        {
+            "root": "fortune/",
+            "pages": [
+                "pages/index/index",
+                "pages/modify/modify"
+            ]
+        }
+    ],
+    "navigateToMiniProgramAppIdList": [
+        "wxdd1c2985b6ed0793",
+        "wx8b5ec44d6f55bba9",
+        "wxc83a604dd12f0b54",
+        "wxeb1a7d28a9442e45",
+        "wx910f347967d7610f",
+        "wx802bda51f7c3cadb"
+    ],
+    "debug": false,
+    "sitemapLocation": "sitemap.json"
+}
