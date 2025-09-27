@@ -83,25 +83,46 @@
     const ganzhi = `${li.gzYear}年 ${li.gzMonth}月 ${li.gzDay}日`;
     const week = `星期${['日','一','二','三','四','五','六'][date.getDay()]}`;
     dayPanelEl.innerHTML = `
-      <div><strong>${date.getFullYear()}-${(m2(date.getMonth()+1))}-${m2(date.getDate())}</strong> · ${week}</div>
-      <div class="muted">${lunar} · ${li.astro} · 生肖${li.Animal}</div>
-      <div class="muted">干支：${ganzhi}${li.isTerm ? ' · 节气：'+li.Term : ''}</div>
-      <div id="yjLine" class="muted">宜/忌 加载中...</div>
+      <div class="day-info">
+        <div class="date-info">
+          <div class="date-main">${date.getFullYear()}-${(m2(date.getMonth()+1))}-${m2(date.getDate())} · ${week}</div>
+          <div class="lunar-info">${lunar} · 生肖${li.Animal}</div>
+          <div class="ganzhi-info">干支：${ganzhi}${li.isTerm ? ' · 节气：'+li.Term : ''}</div>
+        </div>
+        <div class="yiji-info">
+          <div class="yi-info">
+            <span class="label">宜:</span>
+            <span class="content" id="yiContent">加载中...</span>
+          </div>
+          <div class="ji-info">
+            <span class="label">忌:</span>
+            <span class="content" id="jiContent">加载中...</span>
+          </div>
+        </div>
+      </div>
     `;
     fetch(`/api/yj?y=${date.getFullYear()}&m=${date.getMonth()+1}&d=${date.getDate()}`)
       .then(r=>r.json())
       .then(data=>{
-        const yj = document.getElementById('yjLine');
-        if(!yj) return;
-        if(data && (data.yi || data.ji)){
-          yj.innerHTML = `宜：${data.yi || '-'}<br/>忌：${data.ji || '-'}`;
-        }else{
-          yj.textContent = '宜/忌 暂无';
+        const yiContent = document.getElementById('yiContent');
+        const jiContent = document.getElementById('jiContent');
+        if(yiContent && jiContent){
+          if(data && (data.yi || data.ji)){
+            yiContent.textContent = data.yi || '-';
+            jiContent.textContent = data.ji || '-';
+          }else{
+            yiContent.textContent = '暂无';
+            jiContent.textContent = '暂无';
+          }
         }
       })
       .catch(()=>{
-        const yj = document.getElementById('yjLine');
-        if(yj) yj.textContent = '宜/忌 加载失败';
+        const yiContent = document.getElementById('yiContent');
+        const jiContent = document.getElementById('jiContent');
+        if(yiContent && jiContent){
+          yiContent.textContent = '加载失败';
+          jiContent.textContent = '加载失败';
+        }
       });
   }
 
