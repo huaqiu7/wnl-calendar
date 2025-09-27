@@ -133,6 +133,55 @@ body {
     line-height: 1.6;
 }
 
+.day-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.date-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.date-main {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.lunar-info, .ganzhi-info {
+    font-size: 14px;
+    color: #666;
+}
+
+.yiji-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.yi-info, .ji-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.yi-info .label, .ji-info .label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    min-width: 20px;
+}
+
+.yi-info .content, .ji-info .content {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    flex: 1;
+}
+
 .muted {
     color: #777;
 }
